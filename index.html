@@ -97,11 +97,10 @@
                     <aside>
                         <p>De ce vechi? Tehnologia avanseaza asa de repede incat ce e azi nou maine devine vechi.</p>
                         <figure>
-                            <picture>
-                                <source srcset="./resurse/imagini/calculator_vechi_mic.jpg" media="(max-width:500px)"/>
-                                <source srcset="./resurse/imagini/calculator_vechi_mediu.jpg" media="(max-width:1000px)"/>
-                                <img src="./resurse/imagini/calculator_vechi.jpg" alt="Calculator vechi"/>
-                            </picture>
+                            <img sizes="(max-width:500px) 160px, (max-width:1000px) 320px, 640px"
+                                 srcset="./resurse/imagini/calculator_vechi_mic.jpg 160w, ./resurse/imagini/calculator_vechi_mediu.jpg 320w, ./resurse/imagini/calculator_vechi.jpg 640w"
+                                 alt="Calculator vechi"
+                                 src="./resurse/imagini/calculator_vechi.jpg">
                             <figcaption>Calculator vechi</figcaption>
                         </figure>
                     </aside>
