@@ -1,0 +1,32 @@
+.area1 {
+    grid-area: area1;
+}
+.area2 {
+    grid-area: area2;
+}
+.area3 {
+    grid-area: area3;
+}
+.area4 {
+    grid-area: area4;
+}
+.area5 {
+    grid-area: area5;
+}
+.area6 {
+    grid-area: area6;
+}
+.area7 {
+    grid-area: area7;
+}
+.area8 {
+    grid-area: area8;
+}
+.grid-pagina {
+    display: grid;
+    grid-template-areas:
+    'area1 area1 area1 area1'
+    'area3 area2 area2 area4'
+    'area8 area8 area8 area8'
+    'area7 area7 area5 area6';
+}

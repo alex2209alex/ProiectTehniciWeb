@@ -15,6 +15,7 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="msapplication-config" content="./resurse/ico/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="./resurse/css/style.css">
     </head>
     <body>
         <header>
@@ -52,108 +53,138 @@
                 </li>
             </ul>
         </nav>
-        <main>
-            <section id="promotii">
-                <h2>Oferte promotionale!</h2>
-                <!--nested list in html https://www.webucator.com/article/how-to-properly-nest-lists-in-html/-->
-                <ol>
-                    <!--Continut luat de pe https://www.emag.ro/sistem-gaming-lenovo-legion-t5-28imb05-cu-procesor-intelr-coretm-i5-10400f-pana-4-30-ghz-comet-lake-16gb-ddr4-512gb-ssd-m-2-2280-pcie-3-0-nvme-nvidia-geforce-rtx-2060-cd-6gb-gddr6-free-dos-90nc00rtri/pd/DJXDSFMBM/-->
-                    <li>Sistem <b>Gaming</b> Lenovo Legion T5 28IMB05 <s>4999.99</s> <ins>4499.99</ins> <b>lei</b>
-                        <ul>
-                            <li>Procesor Intel® Core™ i5-10400F pana 4.30 GHz, Comet Lake</li>
-                            <li>512GB SSD M.2 2280 <b>PC</b>Ie 3.0 NVMe</li>
-                            <li>NVIDIA GeForce RTX 2060 CD 6GB GDDR6</li>
-                        </ul>
-                    </li>
-                    <!--Continut luat de pe https://www.emag.ro/tastatura-gaming-mecanica-a-k75-iluminare-rainbow-tgsk75/pd/DBZZSTMBM/-->
-                    <li><b>Tastatura</b> <b>gaming</b> mecanica A+ K75, iluminare rainbow <s>139.99</s> <ins>109.99</ins> <b>lei</b>
-                        <ul>
-                            <li>Material: metal + ABS</li>
-                            <li>Comutator rosu, 50 milioane de clickuri</li>
-                            <li>Switch- blue</li>
-                            <li>Cablu 1.5M PU</li>
-                        </ul>
-                    </li>
-                    <!--Continut luat de pe https://www.emag.ro/tastatura-bluetooth-logitech-k380-multi-device-layout-us-intl-alb-920-009868/pd/DM2ZV3MBM/?ref=sponsored_products_listing_v1_1_4&recid=rec_64_ddcb2b15cc0b0a7f55daf2defe8f02e76cf6ef7bcd4bf10099bcddfd829672fc_1645799051&aid=d4dc9a38-94d1-11ec-a364-02e303c7418c&oid=6918665&aidr=d4dca0cf-94d1-11ec-a364-02e303c7418c&scenario_ID=64-->
-                    <li><b>Tastatura</b> Bluetooth Logitech K380, Multi-Device, layout US INTL, Alb <s>299.99</s> <ins>239.99</ins> <b>lei</b>
-                        <ul>
-                            <li>Ultra subtire</li>
-                            <li>Baterii alcaline AAA</li>
-                        </ul>
-                    </li>
-                </ol>
+        <main class="grid-pagina">
+            <section class="area1">
+                <h2>Zona 1 pentru prezentare</h2>
+                <p>Donec dignissim lacus quis dolor placerat sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut tincidunt nunc sit amet scelerisque luctus. Pellentesque vel arcu at libero porta aliquam. Aliquam elit sem, sollicitudin ac nibh a, gravida hendrerit sapien. Curabitur vitae pretium erat.</p>
             </section>
-            <section id="lichidare">
-                <h2>Lichidare de stoc!</h2>
-                <dl>
-                    <!--Continut luat de pe https://www.emag.ro/mouse-gaming-razer-deathadder-essential-2021-negru-rz01-03850100-r3m1/pd/DYSG2HMBM/?X-Search-Id=55f05a179d24b0201e65&X-Product-Id=8314253&X-Search-Page=1&X-Search-Position=5&X-Section=search&X-MB=0&X-Search-Action=view-->
-                    <dt><b>Mouse</b> <b>gaming</b> Razer DeathAdder Essential 2021, Negru</dt>
-                    <dd>Au mai ramas 6 bucati.</dd>
-                    <!--Continut luat de pe https://www.emag.ro/mouse-gaming-incarcare-wireless-universal-alb-dzcp0340-1/pd/DG4V67MBM/-->
-                    <dt><b>Mouse</b> <b>Gaming</b>, Incarcare wireless, universal, Alb</dt>
-                    <dd>Au mai ramas 3 bucati.</dd>
-                    <!--Continut luat de pe https://www.emag.ro/laptop-allview-cu-procesor-intel-celeron-n4000-pana-la-2-60-ghz-15-6-full-hd-4gb-256gb-ssd-intel-uhd-600-ubuntu-grey-allbook-h/pd/D81Y12MBM/?X-Search-Id=cd4af3351f556ee5c42d&X-Product-Id=7181918&X-Search-Page=1&X-Search-Position=0&X-Section=search&X-MB=0&X-Search-Action=view-->
-                    <dt><b>Laptop</b> Allview Allbook H cu procesor Intel Celeron N4000 pana la 2.60 GHz, 15.6", Full HD, 4GB, 256GB SSD, Intel UHD 600, Ubuntu, Grey</dt>
-                    <dd>Au mai ramas 2 bucati.</dd>
-                    <!--Continut luat de pe https://www.emag.ro/casti-gaming-somic-g941-surround-7-1-negru-g941-bk/pd/D4L3ZYBBM/?X-Search-Id=18705bab0ba7e1ff6d0f&X-Product-Id=937015&X-Search-Page=1&X-Search-Position=13&X-Section=search&X-MB=0&X-Search-Action=view-->
-                    <dt><b>Casti</b> <b>gaming</b> Somic G941, Surround 7.1, Negru</dt>
-                    <dd>Au mai ramas 10 bucati.</dd>
-                    <!--Continut luat de pe https://www.emag.ro/monitor-led-samsung-24-curved-full-hd-d-sub-hdmi-negru-lc24f396fhrxen/pd/DNV19TMBM/?X-Search-Id=71d27e159dfdf7a601e9&X-Product-Id=7835033&X-Search-Page=1&X-Search-Position=0&X-Section=search&X-MB=0&X-Search-Action=view-->
-                    <dt><b>Monitor</b> LED Samsung 24" Curved, Full HD, D-Sub, HDMI, Negru, LC24F396FHRXEN
-                    </dt>
-                    <dd>Au mai ramas 12 bucati.</dd>
-                </dl>
+            <section class="area2">
+                <h2>Zona 2 pentru tabel</h2>
+                <p>Donec dignissim lacus quis dolor placerat sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut tincidunt nunc sit amet scelerisque luctus. Pellentesque vel arcu at libero porta aliquam. Aliquam elit sem, sollicitudin ac nibh a, gravida hendrerit sapien. Curabitur vitae pretium erat.</p>
             </section>
-            <section id="produse_noi">
-                <h2>Produse noi</h2>
-                <section>
-                    <h3><b>Laptop-uri</b> noi pe site</h3>
-                    <ul>
-                        <!--Continut luat de pe https://www.emag.ro/laptop-gaming-asus-rog-strix-scar-15-g533qs-cu-procesor-amd-ryzentm-9-5900hx-pana-la-4-60-ghz-15-6-full-hd-300hz-32gb-1tb-ssd-nvidiar-geforce-rtxtm-3080-16gb-free-dos-black-g533qs-hf009/pd/D0DBGDMBM/?X-Search-Id=c7e84ac3668c8eb1c1ae&X-Product-Id=7739493&X-Search-Page=1&X-Search-Position=8&X-Section=search&X-MB=0&X-Search-Action=view&ref=ps&emag_click_id=b9ec5500570dbf8a1060f70363517e06&utm_source=laptopgaming.ro_affiliate_0G29&utm_medium=profitshare&utm_campaign=profitshare_0G29&utm_content=link-->
-                        <li><b>Laptop</b> <b>Gaming</b> ASUS ROG Strix SCAR 15 G533QS cu procesor AMD Ryzen™ 9 5900HX pana la 4.60 GHz, 15.6", Full HD, 300Hz, 32GB, 1TB SSD, NVIDIA® GeForce RTX™ 3080 16GB, Free DOS, Black</li>
-                        <!--Continut luat de pe https://www.emag.ro/laptop-gaming-lenovo-legion-5-pro-16ach6h-cu-procesor-amd-ryzentm-7-5800h-16-wqxga-165hz-32gb-1tb-ssd-nvidia-geforce-rtx-3070-8gb-free-dos-stingray-82jq00b1rm/pd/D283H9MBM/?X-Search-Id=94719b4034602cd7d519&X-Product-Id=8886924&X-Search-Page=1&X-Search-Position=0&X-Section=search&X-MB=0&X-Search-Action=view-->
-                        <li><b>Laptop</b> <b>Gaming</b> Lenovo Legion 5 Pro 16ACH6H cu procesor AMD Ryzen™ 7 5800H, 16", WQXGA, 165Hz, 32GB, 1TB SSD, NVIDIA GeForce RTX 3070 8GB, Free Dos, Stingray</li>
-                    </ul>
-                    <a href="https://www.youtube.com/embed/BlT6sa1q6QU" target="iframe_laptop_noi" >ASUS ROG Strix SCAR 15 G533QS</a>
-                    <a href="https://www.youtube.com/embed/R7u-Us_Ywuc" target="iframe_laptop_noi" >Lenovo Legion 5 Pro</a>
-                    <br>
-                    <iframe name="iframe_laptop_noi" width="640" height="320" src="https://www.youtube.com/embed/BlT6sa1q6QU"></iframe>
-                    <p>Lista cu <b>laptop-uri</b> de <b>gaming</b> performante <a href="https://www.pcgamer.com/uk/best-gaming-laptop/" target="_blank">aici</a>.</p>
+            <section class="area3">
+                <h2>Zona 3 pentru calendarul de evenimente</h2>
+                <p>Donec dignissim lacus quis dolor placerat sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut tincidunt nunc sit amet scelerisque luctus. Pellentesque vel arcu at libero porta aliquam. Aliquam elit sem, sollicitudin ac nibh a, gravida hendrerit sapien. Curabitur vitae pretium erat.</p>
+            </section>
+            <section class="area4">
+                <h2>Zona 4 pentru anunturi</h2>
+                <p>Donec dignissim lacus quis dolor placerat sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut tincidunt nunc sit amet scelerisque luctus. Pellentesque vel arcu at libero porta aliquam. Aliquam elit sem, sollicitudin ac nibh a, gravida hendrerit sapien. Curabitur vitae pretium erat.</p>
+            </section>
+            <section class="area5">
+                <h2>Zona 5 pentru lista de utilizatori online</h2>
+                <p>Donec dignissim lacus quis dolor placerat sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut tincidunt nunc sit amet scelerisque luctus. Pellentesque vel arcu at libero porta aliquam. Aliquam elit sem, sollicitudin ac nibh a, gravida hendrerit sapien. Curabitur vitae pretium erat.</p>
+            </section>
+            <section class="area6">
+                <h2>Zona 6 pentru date despre utilizator și statistici</h2>
+                <p>Donec dignissim lacus quis dolor placerat sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut tincidunt nunc sit amet scelerisque luctus. Pellentesque vel arcu at libero porta aliquam. Aliquam elit sem, sollicitudin ac nibh a, gravida hendrerit sapien. Curabitur vitae pretium erat.</p>
+            </section>
+            <section class="area7">
+                <h2>Zona 7 pentru date despre site și server</h2>
+                <p>Donec dignissim lacus quis dolor placerat sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut tincidunt nunc sit amet scelerisque luctus. Pellentesque vel arcu at libero porta aliquam. Aliquam elit sem, sollicitudin ac nibh a, gravida hendrerit sapien. Curabitur vitae pretium erat.</p>
+            </section>
+            <div class="area8">
+                <section id="promotii">
+                    <h3>Oferte promotionale!</h3>
+                    <!--nested list in html https://www.webucator.com/article/how-to-properly-nest-lists-in-html/-->
+                    <ol>
+                        <!--Continut luat de pe https://www.emag.ro/sistem-gaming-lenovo-legion-t5-28imb05-cu-procesor-intelr-coretm-i5-10400f-pana-4-30-ghz-comet-lake-16gb-ddr4-512gb-ssd-m-2-2280-pcie-3-0-nvme-nvidia-geforce-rtx-2060-cd-6gb-gddr6-free-dos-90nc00rtri/pd/DJXDSFMBM/-->
+                        <li>Sistem <b>Gaming</b> Lenovo Legion T5 28IMB05 <s>4999.99</s> <ins>4499.99</ins> <b>lei</b>
+                            <ul>
+                                <li>Procesor Intel® Core™ i5-10400F pana 4.30 GHz, Comet Lake</li>
+                                <li>512GB SSD M.2 2280 <b>PC</b>Ie 3.0 NVMe</li>
+                                <li>NVIDIA GeForce RTX 2060 CD 6GB GDDR6</li>
+                            </ul>
+                        </li>
+                        <!--Continut luat de pe https://www.emag.ro/tastatura-gaming-mecanica-a-k75-iluminare-rainbow-tgsk75/pd/DBZZSTMBM/-->
+                        <li><b>Tastatura</b> <b>gaming</b> mecanica A+ K75, iluminare rainbow <s>139.99</s> <ins>109.99</ins> <b>lei</b>
+                            <ul>
+                                <li>Material: metal + ABS</li>
+                                <li>Comutator rosu, 50 milioane de clickuri</li>
+                                <li>Switch- blue</li>
+                                <li>Cablu 1.5M PU</li>
+                            </ul>
+                        </li>
+                        <!--Continut luat de pe https://www.emag.ro/tastatura-bluetooth-logitech-k380-multi-device-layout-us-intl-alb-920-009868/pd/DM2ZV3MBM/?ref=sponsored_products_listing_v1_1_4&recid=rec_64_ddcb2b15cc0b0a7f55daf2defe8f02e76cf6ef7bcd4bf10099bcddfd829672fc_1645799051&aid=d4dc9a38-94d1-11ec-a364-02e303c7418c&oid=6918665&aidr=d4dca0cf-94d1-11ec-a364-02e303c7418c&scenario_ID=64-->
+                        <li><b>Tastatura</b> Bluetooth Logitech K380, Multi-Device, layout US INTL, Alb <s>299.99</s> <ins>239.99</ins> <b>lei</b>
+                            <ul>
+                                <li>Ultra subtire</li>
+                                <li>Baterii alcaline AAA</li>
+                            </ul>
+                        </li>
+                    </ol>
                 </section>
-            </section>
-            <section id="informatii">
-                <h2>Informatii</h2>
-                <details>
-                    <summary>Despre noi</summary>
-                    <p>Multumim ca vizitati magazinul nostru online "Calculatoare noi si vechi".</p>
-                    <aside>
-                        <p>De ce vechi? Tehnologia avanseaza asa de repede incat ce e azi nou maine devine vechi.</p>
-                        <figure>
-                            <img sizes="(max-width:500px) 160px, (max-width:1000px) 320px, 640px"
-                                 srcset="./resurse/imagini/calculator_vechi_mic.jpg 160w, ./resurse/imagini/calculator_vechi_mediu.jpg 320w, ./resurse/imagini/calculator_vechi.jpg 640w"
-                                 alt="Calculator vechi"
-                                 src="./resurse/imagini/calculator_vechi.jpg">
-                            <figcaption>Calculator vechi</figcaption>
-                        </figure>
-                        <a href="./resurse/imagini/calculator_vechi.jpg" download>Daca doresti imaginea da click aici.</a>
-                    </aside>
-                    <p>Suntem o echipa tanara dornici sa va asistam in alegerea unui desktop <b>PC</b> sau a unui <b>laptop</b> potrivit nevoilor dumneavoastra.</p>
-                    <p>De asemenea, la noi veti gasi o gama variata de accesorii precum: <b>mouse-uri</b>, <b>tastaturi</b>, <b>monitoare</b> si <b>casti</b>.</p>
-                    <p>Calculatoare noi si vechi <abbr title="Societate cu raspundere limitata">SRL</abbr>, <abbr title="Cod unic de inregistrare">CUI</abbr> 111</p>
-                </details>
-                <details>
-                    <summary>Cum comand?</summary>
-                    <p>In pagina de comenzi se selecteaza produsele dorite si se apasa butonul cumpara.</p>
-                    <p>Prin crearea unui cont in magazinul online veti avea acces la istoricul comenzilor. Se va utiliza automat pentru livrare adresa introdusa in contul creat.</p>
-                    <p>Se pot comanda produse si fara a crea cont in magazinul online cu conditia sa se introduca adresa de livrare.</p>
-                </details>
-                <details>
-                    <summary>Cum returnez produse?</summary>
-                    <p>Se completeaza formularul de retur din contul dumneavoastra.</p>
-                    <p>Aveti dreptul sa returnati un produs in primele 14 zile de la cumparare.</p>
-                    <p>Produsele trebuie sa fie in ambalajul original nelovite si in buna stare de functionare.</p>
-                </details>
-            </section>
+                <section id="lichidare">
+                    <h3>Lichidare de stoc!</h3>
+                    <dl>
+                        <!--Continut luat de pe https://www.emag.ro/mouse-gaming-razer-deathadder-essential-2021-negru-rz01-03850100-r3m1/pd/DYSG2HMBM/?X-Search-Id=55f05a179d24b0201e65&X-Product-Id=8314253&X-Search-Page=1&X-Search-Position=5&X-Section=search&X-MB=0&X-Search-Action=view-->
+                        <dt><b>Mouse</b> <b>gaming</b> Razer DeathAdder Essential 2021, Negru</dt>
+                        <dd>Au mai ramas 6 bucati.</dd>
+                        <!--Continut luat de pe https://www.emag.ro/mouse-gaming-incarcare-wireless-universal-alb-dzcp0340-1/pd/DG4V67MBM/-->
+                        <dt><b>Mouse</b> <b>Gaming</b>, Incarcare wireless, universal, Alb</dt>
+                        <dd>Au mai ramas 3 bucati.</dd>
+                        <!--Continut luat de pe https://www.emag.ro/laptop-allview-cu-procesor-intel-celeron-n4000-pana-la-2-60-ghz-15-6-full-hd-4gb-256gb-ssd-intel-uhd-600-ubuntu-grey-allbook-h/pd/D81Y12MBM/?X-Search-Id=cd4af3351f556ee5c42d&X-Product-Id=7181918&X-Search-Page=1&X-Search-Position=0&X-Section=search&X-MB=0&X-Search-Action=view-->
+                        <dt><b>Laptop</b> Allview Allbook H cu procesor Intel Celeron N4000 pana la 2.60 GHz, 15.6", Full HD, 4GB, 256GB SSD, Intel UHD 600, Ubuntu, Grey</dt>
+                        <dd>Au mai ramas 2 bucati.</dd>
+                        <!--Continut luat de pe https://www.emag.ro/casti-gaming-somic-g941-surround-7-1-negru-g941-bk/pd/D4L3ZYBBM/?X-Search-Id=18705bab0ba7e1ff6d0f&X-Product-Id=937015&X-Search-Page=1&X-Search-Position=13&X-Section=search&X-MB=0&X-Search-Action=view-->
+                        <dt><b>Casti</b> <b>gaming</b> Somic G941, Surround 7.1, Negru</dt>
+                        <dd>Au mai ramas 10 bucati.</dd>
+                        <!--Continut luat de pe https://www.emag.ro/monitor-led-samsung-24-curved-full-hd-d-sub-hdmi-negru-lc24f396fhrxen/pd/DNV19TMBM/?X-Search-Id=71d27e159dfdf7a601e9&X-Product-Id=7835033&X-Search-Page=1&X-Search-Position=0&X-Section=search&X-MB=0&X-Search-Action=view-->
+                        <dt><b>Monitor</b> LED Samsung 24" Curved, Full HD, D-Sub, HDMI, Negru, LC24F396FHRXEN
+                        </dt>
+                        <dd>Au mai ramas 12 bucati.</dd>
+                    </dl>
+                </section>
+                <section id="produse_noi">
+                    <h3>Produse noi</h3>
+                    <section>
+                        <h4><b>Laptop-uri</b> noi pe site</h4>
+                        <ul>
+                            <!--Continut luat de pe https://www.emag.ro/laptop-gaming-asus-rog-strix-scar-15-g533qs-cu-procesor-amd-ryzentm-9-5900hx-pana-la-4-60-ghz-15-6-full-hd-300hz-32gb-1tb-ssd-nvidiar-geforce-rtxtm-3080-16gb-free-dos-black-g533qs-hf009/pd/D0DBGDMBM/?X-Search-Id=c7e84ac3668c8eb1c1ae&X-Product-Id=7739493&X-Search-Page=1&X-Search-Position=8&X-Section=search&X-MB=0&X-Search-Action=view&ref=ps&emag_click_id=b9ec5500570dbf8a1060f70363517e06&utm_source=laptopgaming.ro_affiliate_0G29&utm_medium=profitshare&utm_campaign=profitshare_0G29&utm_content=link-->
+                            <li><b>Laptop</b> <b>Gaming</b> ASUS ROG Strix SCAR 15 G533QS cu procesor AMD Ryzen™ 9 5900HX pana la 4.60 GHz, 15.6", Full HD, 300Hz, 32GB, 1TB SSD, NVIDIA® GeForce RTX™ 3080 16GB, Free DOS, Black</li>
+                            <!--Continut luat de pe https://www.emag.ro/laptop-gaming-lenovo-legion-5-pro-16ach6h-cu-procesor-amd-ryzentm-7-5800h-16-wqxga-165hz-32gb-1tb-ssd-nvidia-geforce-rtx-3070-8gb-free-dos-stingray-82jq00b1rm/pd/D283H9MBM/?X-Search-Id=94719b4034602cd7d519&X-Product-Id=8886924&X-Search-Page=1&X-Search-Position=0&X-Section=search&X-MB=0&X-Search-Action=view-->
+                            <li><b>Laptop</b> <b>Gaming</b> Lenovo Legion 5 Pro 16ACH6H cu procesor AMD Ryzen™ 7 5800H, 16", WQXGA, 165Hz, 32GB, 1TB SSD, NVIDIA GeForce RTX 3070 8GB, Free Dos, Stingray</li>
+                        </ul>
+                        <a href="https://www.youtube.com/embed/BlT6sa1q6QU" target="iframe_laptop_noi" >ASUS ROG Strix SCAR 15 G533QS</a>
+                        <a href="https://www.youtube.com/embed/R7u-Us_Ywuc" target="iframe_laptop_noi" >Lenovo Legion 5 Pro</a>
+                        <br>
+                        <iframe name="iframe_laptop_noi" width="640" height="320" src="https://www.youtube.com/embed/BlT6sa1q6QU"></iframe>
+                        <p>Lista cu <b>laptop-uri</b> de <b>gaming</b> performante <a href="https://www.pcgamer.com/uk/best-gaming-laptop/" target="_blank">aici</a>.</p>
+                    </section>
+                </section>
+                <section id="informatii">
+                    <h3>Informatii</h3>
+                    <details>
+                        <summary>Despre noi</summary>
+                        <p>Multumim ca vizitati magazinul nostru online "Calculatoare noi si vechi".</p>
+                        <aside>
+                            <p>De ce vechi? Tehnologia avanseaza asa de repede incat ce e azi nou maine devine vechi.</p>
+                            <figure>
+                                <img sizes="(max-width:500px) 160px, (max-width:1000px) 320px, 640px"
+                                     srcset="./resurse/imagini/calculator_vechi_mic.jpg 160w, ./resurse/imagini/calculator_vechi_mediu.jpg 320w, ./resurse/imagini/calculator_vechi.jpg 640w"
+                                     alt="Calculator vechi"
+                                     src="./resurse/imagini/calculator_vechi.jpg">
+                                <figcaption>Calculator vechi</figcaption>
+                            </figure>
+                            <a href="./resurse/imagini/calculator_vechi.jpg" download>Daca doresti imaginea da click aici.</a>
+                        </aside>
+                        <p>Suntem o echipa tanara dornici sa va asistam in alegerea unui desktop <b>PC</b> sau a unui <b>laptop</b> potrivit nevoilor dumneavoastra.</p>
+                        <p>De asemenea, la noi veti gasi o gama variata de accesorii precum: <b>mouse-uri</b>, <b>tastaturi</b>, <b>monitoare</b> si <b>casti</b>.</p>
+                        <p>Calculatoare noi si vechi <abbr title="Societate cu raspundere limitata">SRL</abbr>, <abbr title="Cod unic de inregistrare">CUI</abbr> 111</p>
+                    </details>
+                    <details>
+                        <summary>Cum comand?</summary>
+                        <p>In pagina de comenzi se selecteaza produsele dorite si se apasa butonul cumpara.</p>
+                        <p>Prin crearea unui cont in magazinul online veti avea acces la istoricul comenzilor. Se va utiliza automat pentru livrare adresa introdusa in contul creat.</p>
+                        <p>Se pot comanda produse si fara a crea cont in magazinul online cu conditia sa se introduca adresa de livrare.</p>
+                    </details>
+                    <details>
+                        <summary>Cum returnez produse?</summary>
+                        <p>Se completeaza formularul de retur din contul dumneavoastra.</p>
+                        <p>Aveti dreptul sa returnati un produs in primele 14 zile de la cumparare.</p>
+                        <p>Produsele trebuie sa fie in ambalajul original nelovite si in buna stare de functionare.</p>
+                    </details>
+                </section>
+            </div>
         </main>
         <footer>
             <a href="#">Inapoi sus!</a>
