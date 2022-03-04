@@ -1,0 +1,11 @@
+.grid-pagina {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    'area1 area1'
+    'area2 area2'
+    'area3 area4'
+    'area8 area8'
+    'area5 area6'
+    'area7 area7';
+}
