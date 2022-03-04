@@ -1,6 +1,13 @@
 html {
     font-size: 14px;
 }
+body {
+    --culoare-background: #0509FF; /*principala*/
+    --culoare-text: #FFFFFF;
+    --culoare-border: #F9FF12;
+    --culoare-highlight: #E80756;
+    --culoare-meniu: #07E896;
+}
 .prezentare {
     grid-area: area1;
 }
