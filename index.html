@@ -18,37 +18,44 @@
         <link rel="stylesheet" href="./resurse/css/style.css">
         <link rel="stylesheet" href="./resurse/css/style-1000.css" media="screen and (max-width:1000px)">
         <link rel="stylesheet" href="./resurse/css/style-500.css" media="screen and (max-width:500px)">
+        <link rel="stylesheet" href="./resurse/css/nav.css">
+        <link rel="stylesheet" href="./resurse/css/nav-1000.css" media="screen and (max-width:1000px)" >
+        <link rel="stylesheet" href="./resurse/css/nav-500.css" media="screen and (max-width:500px)">
     </head>
     <body>
         <header>
             <h1>Magazinul online "Calculatoare noi si vechi"</h1>
         </header>
         <nav>
-            <ul>
-                <li><div>Acasa</div>
+            <label id="hamburger" for="ch-menu">
+                <img src="resurse/imagini/Hamburger_icon_alb.png" alt="menu">
+            </label>
+            <input id="checkbox-meniu" type="checkbox">
+            <ul class="meniu">
+                <li><div><a href="index.html">Acasa</a></div>
                     <ul>
-                        <li><a href="#promotii">Oferte promotionale!</a></li>
-                        <li><a href="#lichidare">Lichidare de stoc</a></li>
-                        <li><a href="#produse_noi">Produse noi</a></li>
-                        <li><a href="#informatii">Informatii</a></li>
+                        <li><a href="index.html#oferte">Oferte promotionale</a></li>
+                        <li><a href="index.html#lichidare">Lichidare de stoc</a></li>
+                        <li><a href="index.html#produse_noi">Produse noi</a></li>
+                        <li><a href="index.html#informatii">Informatii</a></li>
                     </ul>
                 </li>
-                <li><div>Prezentare produse</div>
-                    <ul>
-                        <li>In lucru</li>
-                    </ul>
-                </li>
-                <li><div>Comenzi produse</div>
-                    <ul>
-                        <li>In lucru</li>
-                    </ul>
-                </li>
-                <li><div>Creare cont/Autentificare</div>
+                <li><div><a href="produse.html">Produse</a></div>
                     <ul>
                         <li>In lucru</li>
                     </ul>
                 </li>
-                <li><div>Servicii pentru clientii nostri</div>
+                <li><div><a href="comenzi.html">Comenzi</a></div>
+                    <ul>
+                        <li>In lucru</li>
+                    </ul>
+                </li>
+                <li><div><a href="cont.html">Cont</a></div>
+                    <ul>
+                        <li>In lucru</li>
+                    </ul>
+                </li>
+                <li><div><a href="servicii.html">Servicii</a></div>
                     <ul>
                         <li>In lucru</li>
                     </ul>
@@ -85,7 +92,7 @@
                 <p>Donec dignissim lacus quis dolor placerat sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut tincidunt nunc sit amet scelerisque luctus. Pellentesque vel arcu at libero porta aliquam. Aliquam elit sem, sollicitudin ac nibh a, gravida hendrerit sapien. Curabitur vitae pretium erat.</p>
             </section>
             <div class="continut-etapa-1">
-                <section id="promotii">
+                <section id="oferte">
                     <h3>Oferte promotionale!</h3>
                     <!--nested list in html https://www.webucator.com/article/how-to-properly-nest-lists-in-html/-->
                     <ol>
