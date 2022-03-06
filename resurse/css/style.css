@@ -6,7 +6,7 @@ body {
     --culoare-text: #FFFFFF;
     --culoare-border: #F9FF12;
     --culoare-highlight: #E80756;
-    --culoare-meniu: #07E896;
+    --culoare-meniu: #00008B;
 }
 .prezentare {
     grid-area: area1;
