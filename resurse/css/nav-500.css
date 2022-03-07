@@ -1,0 +1,57 @@
+#hamburger {
+    display: block;
+}
+#hamburger img {
+    height: var(--inaltime-meniu);
+    float: left;
+}
+ul.meniu {
+    display: none;
+    position: relative;
+    width: 100%;
+}
+nav ul.meniu li a {
+    color: var(--culoare-text-meniu);
+}
+nav ul.meniu li ul a {
+    color: var(--culoare-highlight);
+}
+#checkbox-meniu:checked+ul.meniu {
+    display: block;
+    z-index: 10;
+    position: relative;
+    transform-origin: 0 0;
+    animation-name: aparitie_meniu_ecran_mic;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+@keyframes aparitie_meniu_ecran_mic {
+    0% {
+        transform: scale(0,1);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+nav ul.meniu li {
+    width: 100%;
+}
+nav ul.meniu>li ul {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    transform: scale(1,1);
+}
+#checkbox-meniu:checked+ul.meniu>li ul>* {
+    position: relative;
+    z-index: 10;
+}
+nav ul.meniu>li:hover>ul {
+    z-index: 10;
+}
+ul.meniu ul a::before, ul.meniu ul a::after {
+    content: none;
+    transition: none;
+}
