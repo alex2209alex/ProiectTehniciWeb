@@ -52,3 +52,26 @@ header {
     'area8 area8 area8 area8'
     'area7 area7 area5 area6';
 }
+#link-top {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    border: var(--culoare-meniu) solid 1px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 2rem;
+    color: var(--culoare-highlight);
+    opacity: 0.5;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transition: opacity 0.5s, font-size 0.5s;
+    background-image: radial-gradient(var(--culoare-text-meniu), var(--culoare-meniu));
+}
+#link-top:hover {
+    opacity: 1;
+    font-size: 4rem;
+}
