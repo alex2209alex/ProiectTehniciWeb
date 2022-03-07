@@ -2,11 +2,21 @@ html {
     font-size: 14px;
 }
 body {
-    --culoare-background: #0509FF; /*principala*/
-    --culoare-text: #FFFFFF;
-    --culoare-border: #F9FF12;
+    --culoare-background: #BAE5FA; /*principala*/
+    --culoare-text: #000000;
+    --culoare-text-meniu: #FFFFFF;
     --culoare-highlight: #E80756;
     --culoare-meniu: #00008B;
+    background: var(--culoare-background);
+    color: var(--culoare-text);
+    margin: 0;
+    padding: 0;
+}
+footer {
+    padding: 20px;
+}
+header {
+    text-align: center;
 }
 .prezentare {
     grid-area: area1;
@@ -34,6 +44,7 @@ body {
 }
 .grid-pagina {
     display: grid;
+    padding: 20px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas:
     'area1 area1 area1 area1'

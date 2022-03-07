@@ -1,0 +1,9 @@
+#acasa {
+    display: none;
+}
+#imagine-casa {
+    display: block;
+}
+nav ul.meniu>li{
+    width:80px
+}
