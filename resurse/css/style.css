@@ -75,3 +75,33 @@ header {
     opacity: 1;
     font-size: 4rem;
 }
+.flex-box {
+    display: flex;
+    line-height: 15px;
+    gap: 10px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.iframe-button {
+    display: block;
+    text-decoration: none;
+    color: var(--culoare-highlight);
+    background-color: var(--culoare-background);
+    border: solid var(--culoare-meniu);
+    width: 100px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    transition: background-color 500ms;
+    border-bottom: none;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+}
+.iframe-button:hover {
+    background-color: var(--culoare-meniu);
+}
+#video-prima-pagina {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
