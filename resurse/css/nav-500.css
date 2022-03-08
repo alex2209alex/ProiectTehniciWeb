@@ -11,7 +11,7 @@ ul.meniu {
     width: 100%;
 }
 nav ul.meniu li a {
-    color: var(--albastru-inchis);
+    color: var(--alb);
 }
 nav ul.meniu li ul a {
     color: var(--rosu);
