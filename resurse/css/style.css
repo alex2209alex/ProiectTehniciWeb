@@ -124,3 +124,10 @@ h2 {
     height: 100%;
     border: none;
 }
+ins {
+    color: var(--rosu);
+}
+h1 {
+    font-family: 'Tangerine', serif;
+    font-size: 48px;
+}
