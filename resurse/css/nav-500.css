@@ -11,10 +11,10 @@ ul.meniu {
     width: 100%;
 }
 nav ul.meniu li a {
-    color: var(--culoare-text-meniu);
+    color: var(--albastru-inchis);
 }
 nav ul.meniu li ul a {
-    color: var(--culoare-highlight);
+    color: var(--rosu);
 }
 #checkbox-meniu:checked+ul.meniu {
     display: block;

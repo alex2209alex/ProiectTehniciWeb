@@ -6,7 +6,7 @@ nav {
     width: 100%;
     top: 0;
     padding: 0;
-    background: var(--culoare-meniu);
+    background: var(--albastru-inchis);
     z-index: 10;
     position: sticky;
 }
@@ -30,18 +30,18 @@ nav ul, nav li {
 nav ul.meniu li {
     text-align: center;
     list-style-type: none;
-    background: var(--culoare-meniu);
+    background: var(--albastru-inchis);
     cursor: pointer;
 }
 nav ul.meniu li a, nav ul.meniu li div {
     text-decoration: none;
-    color: var(--culoare-text-meniu);
+    color: var(--alb);
     display: block;
     font-weight: bold;
     position: relative;
     height: var(--inaltime-meniu);
     line-height: var(--inaltime-meniu);
-    outline: 1px solid black;
+    outline: 1px solid var(--negru);
 }
 nav ul.meniu>li:hover>ul {
     display: block;
@@ -65,11 +65,11 @@ ul.meniu ul a:hover::before, ul.meniu ul a:hover::after {
 }
 ul.meniu ul a::before {
     left: 0;
-    background: linear-gradient(to right, white, var(--culoare-meniu));
+    background: linear-gradient(to right, var(--alb), var(--albastru-inchis));
 }
 ul.meniu ul a::after {
     right: 0;
-    background: linear-gradient(to left, white, var(--culoare-meniu));
+    background: linear-gradient(to left, var(--alb), var(--albastru-inchis));
 }
 @keyframes aparitie_meniu {
     0% {
