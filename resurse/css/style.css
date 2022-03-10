@@ -84,6 +84,7 @@ h2 {
 }
 .flex-box {
     display: flex;
+    justify-content: center;
     line-height: 15px;
     gap: 10px;
     padding-bottom: 0;
