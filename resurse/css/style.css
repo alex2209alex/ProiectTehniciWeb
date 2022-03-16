@@ -87,6 +87,7 @@ h2 {
     justify-content: center;
     line-height: 15px;
     gap: 10px;
+    width: 60%;
     padding-bottom: 0;
     margin-bottom: 0;
 }
@@ -111,9 +112,9 @@ h2 {
 /*Cod luat de pe w3school*/
 .iframe {
     position: relative;
-    width: 100%;
+    width: 60%;
     overflow: hidden;
-    padding-top: 50%;
+    padding-top: 30%;
 }
 .responsive-iframe {
     position: absolute;
