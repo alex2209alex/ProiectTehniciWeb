@@ -1,71 +1,25 @@
 <!DOCTYPE html>
 <html lang="ro">
     <head>
-        <title>Calculatoare noi si vechi</title>
-        <meta charset="UTF-8">
-        <meta name="author" content="Pavel Alexandru">
+        <title>Calculatoare noi si vechi - home</title>
         <meta name="keywords" content="PC, laptop, mouse, tastatura, monitor, casti, gaming, lei">
         <meta name="description" content="Magazin Calculatoare si Periferice PC Online">
-        <link rel="apple-touch-icon" sizes="180x180" href="./resurse/ico/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./resurse/ico/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./resurse/ico/favicon-16x16.png">
-        <link rel="manifest" href="./resurse/ico/site.webmanifest">
-        <link rel="mask-icon" href="./resurse/ico/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="shortcut icon" href="./resurse/ico/favicon.ico">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-config" content="./resurse/ico/browserconfig.xml">
-        <meta name="theme-color" content="#ffffff">
-        <link rel="stylesheet" href="./resurse/css/style.css">
-        <link rel="stylesheet" href="./resurse/css/style-1000.css" media="screen and (max-width:1000px)">
-        <link rel="stylesheet" href="./resurse/css/style-500.css" media="screen and (max-width:500px)">
-        <link rel="stylesheet" href="./resurse/css/nav.css">
-        <link rel="stylesheet" href="./resurse/css/nav-1000.css" media="screen and (max-width:1000px)" >
-        <link rel="stylesheet" href="./resurse/css/nav-500.css" media="screen and (max-width:500px)">
+
+        <%-include("../fragmente/head.ejs");%>
+
+        <link rel="stylesheet" href="/resurse/css/style.css">
+        <link rel="stylesheet" href="/resurse/css/style-1000.css" media="screen and (max-width:1000px)">
+        <link rel="stylesheet" href="/resurse/css/style-500.css" media="screen and (max-width:500px)">
         <!--Iconul de casa e luat de pe https://www.w3schools.com/howto/howto_css_icon_buttons.asp-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <header>
-            <h1>Magazinul online "Calculatoare noi si vechi"</h1>
-        </header>
-        <nav>
-            <label id="hamburger" for="checkbox-meniu">
-                <img src="resurse/imagini/Hamburger_icon_alb.png" alt="menu">
-            </label>
-            <input id="checkbox-meniu" type="checkbox">
-            <ul class="meniu">
-                <!--Iconul de casa e luat de pe https://www.w3schools.com/howto/howto_css_icon_buttons.asp-->
-                <li><div><a href="index.html" id="acasa">Acasa</a><a href="index.html" id="imagine-casa"><i class="fa fa-home"></i></a></div>
-                    <ul>
-                        <li><a href="index.html#oferte">Oferte</a></li>
-                        <li><a href="index.html#lichidare">Lichidare</a></li>
-                        <li><a href="index.html#produse_noi">Produse noi</a></li>
-                        <li><a href="index.html#informatii">Informatii</a></li>
-                    </ul>
-                </li>
-                <li><div><a href="produse.html">Produse</a></div>
-                    <ul>
-                        <li>In lucru<i class="fa fa-cog fa-spin"></i></li>
-                    </ul>
-                </li>
-                <li><div><a href="servicii.html">Servicii</a></div>
-                    <ul>
-                        <li>In lucru<i class="fa fa-cog fa-spin"></i></li>
-                    </ul>
-                </li>
-                <li><div><a href="cont.html">Cont</a></div>
-                    <ul>
-                        <li>In lucru<i class="fa fa-cog fa-spin"></i></li>
-                    </ul>
-                </li>
-                <li><div><a href="comenzi.html"><i class="fa fa-shopping-cart"></i></a></div>
-                    <ul>
-                        <li>In lucru<i class="fa fa-cog fa-spin"></i></li>
-                    </ul>
-                </li>
-                </li>
-            </ul>
-        </nav>
+        <%-
+            include("../fragmente/header.ejs");
+        %>
+        <%-
+            include("../fragmente/nav.ejs");
+        %>
         <main class="grid-pagina">
             <section class="prezentare">
                 <h2>Salut</h2>
@@ -179,12 +133,12 @@
                             <p>De ce vechi? Tehnologia avanseaza asa de repede incat ce e azi nou maine devine vechi.</p>
                             <figure>
                                 <img sizes="(max-width:500px) 160px, (max-width:1000px) 320px, 640px"
-                                     srcset="./resurse/imagini/calculator_vechi_mic.jpg 160w, ./resurse/imagini/calculator_vechi_mediu.jpg 320w, ./resurse/imagini/calculator_vechi.jpg 640w"
+                                     srcset="/resurse/imagini/calculator_vechi_mic.jpg 160w, /resurse/imagini/calculator_vechi_mediu.jpg 320w, /resurse/imagini/calculator_vechi.jpg 640w"
                                      alt="Calculator vechi"
-                                     src="./resurse/imagini/calculator_vechi.jpg">
+                                     src="/resurse/imagini/calculator_vechi.jpg">
                                 <figcaption>Calculator vechi</figcaption>
                             </figure>
-                            <a href="./resurse/imagini/calculator_vechi.jpg" download>Daca doresti imaginea da click aici.</a>
+                            <a href="/resurse/imagini/calculator_vechi.jpg" download>Daca doresti imaginea da click aici.</a>
                         </aside>
                         <p>Suntem o echipa tanara dornici sa va asistam in alegerea unui desktop <b>PC</b> sau a unui <b>laptop</b> potrivit nevoilor dumneavoastra.</p>
                         <p>De asemenea, la noi veti gasi o gama variata de accesorii precum: <b>mouse-uri</b>, <b>tastaturi</b>, <b>monitoare</b> si <b>casti</b>.</p>
@@ -205,23 +159,8 @@
                 </section>
             </div>
         </main>
-        <footer>
-            <a href="#" title="mergi sus" id="link-top">
-                &#129081;
-            </a>
-            <address>
-                Date contact:
-                <br>
-                <a href="tel:+40712356789">Telefon</a>
-                <br>
-                <a href="https://www.google.ro/maps/place/Faculty+of+Mathematics+and+Informatics+-+University+of+Bucharest/@44.4355393,26.097398,17z/data=!3m1!4b1!4m5!3m4!1s0x40b1ff472f47f047:0x493984726f0235f9!8m2!3d44.4355355!4d26.0995867">Adresa</a>
-                <br>
-                <a href="mailto:calculatoarevechisinoi@gmail.com">Adresa email</a>
-                <br>
-                <a href="https://wa.me/40712356789">Whatsapp</a>
-            </address>
-            <p><small>Copyright &copy; Pavel Alexandru</small></p>
-            <p><small>Pagina creata la data de <time datetime="2022-02-16">16-02-2022</time>.</small></p>
-        </footer>
+        <%-
+            include("../fragmente/footer.ejs");
+        %>
     </body>
 </html>
