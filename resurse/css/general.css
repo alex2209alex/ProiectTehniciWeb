@@ -1,0 +1,14 @@
+html {
+    font-size: 14px;
+}
+body {
+    --albastru-deschis: #BAE5FA; /*principala*/
+    --negru: #000000;
+    --alb: #FFFFFF;
+    --rosu: #E80756;
+    --albastru-inchis: #00008B;
+    background: var(--albastru-deschis);
+    color: var(--negru);
+    margin: 0;
+    padding: 0;
+}

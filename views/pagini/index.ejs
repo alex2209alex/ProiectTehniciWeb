@@ -4,22 +4,16 @@
         <title>Calculatoare noi si vechi - home</title>
         <meta name="keywords" content="PC, laptop, mouse, tastatura, monitor, casti, gaming, lei">
         <meta name="description" content="Magazin Calculatoare si Periferice PC Online">
-
         <%-include("../fragmente/head.ejs");%>
-
-        <link rel="stylesheet" href="/resurse/css/style.css">
-        <link rel="stylesheet" href="/resurse/css/style-1000.css" media="screen and (max-width:1000px)">
-        <link rel="stylesheet" href="/resurse/css/style-500.css" media="screen and (max-width:500px)">
+        <link rel="stylesheet" href="/resurse/css/index.css">
+        <link rel="stylesheet" href="/resurse/css/index-1000.css" media="screen and (max-width:1000px)">
+        <link rel="stylesheet" href="/resurse/css/index-500.css" media="screen and (max-width:500px)">
         <!--Iconul de casa e luat de pe https://www.w3schools.com/howto/howto_css_icon_buttons.asp-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <%-
-            include("../fragmente/header.ejs");
-        %>
-        <%-
-            include("../fragmente/nav.ejs");
-        %>
+        <%-include("../fragmente/header.ejs");%>
+        <%-include("../fragmente/nav.ejs");%>
         <main class="grid-pagina">
             <section class="prezentare">
                 <h2>Salut</h2>
@@ -159,8 +153,6 @@
                 </section>
             </div>
         </main>
-        <%-
-            include("../fragmente/footer.ejs");
-        %>
+        <%-include("../fragmente/footer.ejs");%>
     </body>
 </html>

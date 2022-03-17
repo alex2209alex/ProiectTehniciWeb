@@ -1,0 +1,26 @@
+footer {
+    padding: 20px;
+}
+#link-top {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    border: var(--albastru-inchis) solid 1px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 2rem;
+    color: var(--rosu);
+    opacity: 0.5;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transition: opacity 0.5s, font-size 0.5s;
+    background-image: radial-gradient(var(--alb), var(--albastru-inchis));
+}
+#link-top:hover {
+    opacity: 1;
+    font-size: 4rem;
+}
