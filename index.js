@@ -12,6 +12,11 @@ app.get(["/", "/index", "/home"], function (req, res) {
     res.end();
 });
 
+app.get("/*.ejs", function(req, res){
+    res.status(403).render("pagini/403");
+    res.end();
+})
+
 app.get("/*", function(req, res){
     res.render("pagini"+req.url, function(err, rezRender) {
         if(err) {
