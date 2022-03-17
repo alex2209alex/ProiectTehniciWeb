@@ -12,5 +12,24 @@ app.get(["/", "/index", "/home"], function (req, res) {
     res.end();
 })
 
+app.get("/*", function(req, res){
+    res.render("pagini"+req.url, function(err, rezRender) {
+        if(err) {
+            if(err.message.includes("Failed to lookup view")){
+                console.log(err);
+                res.status(404).render("pagini/404");
+            }
+            else {
+                res.render("pagini/eroare_generala");
+            }
+        }
+        else {
+            console.log(rezRender);
+            res.send(rezRender);
+        }
+    });
+    res.end();
+})
+
 app.listen(8080);
 console.log("A pornit!");
