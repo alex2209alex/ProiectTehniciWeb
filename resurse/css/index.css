@@ -16,6 +16,9 @@
 .utilizator-statistici {
     grid-area: area6;
 }
+.utilizator-statistici p {
+    text-align: center;
+}
 .site-server {
     grid-area: area7;
 }

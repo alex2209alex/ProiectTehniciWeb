@@ -2,20 +2,20 @@ const express = require("express");
 const fs = require("fs");
 const sharp = require("sharp");
 
-app = express();
+const app = express();
 app.set("view engine", "ejs");
 
 app.use("/resurse", express.static(__dirname+"/resurse"));
 
 app.get(["/", "/index", "/home"], function (req, res) {
-    res.render("pagini/index");
+    res.render("pagini/index", {ip: req.ip});
     res.end();
 });
 
 app.get("/*.ejs", function(req, res){
     res.status(403).render("pagini/403");
     res.end();
-})
+});
 
 app.get("/*", function(req, res){
     res.render("pagini"+req.url, function(err, rezRender) {
