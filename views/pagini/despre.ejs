@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <title>Calculatoare noi si vechi - despre</title>
+        <meta name="keywords" content="PC, laptop, mouse, tastatura, monitor, casti, noi, vechi">
+        <meta name="description" content="Magazin Calculatoare si Periferice PC Online">
+        <%-include("../fragmente/head.ejs");%>
+    </head>
+    <body>
+        <%-include("../fragmente/header.ejs");%>
+        <%-include("../fragmente/nav.ejs");%>
+        <main>
+             <h2>Despre noi</h2>
+            <p>Multumim ca vizitati magazinul nostru online "Calculatoare <b>noi</b> si <b>vechi</b>".</p>
+             <aside>
+                 <p>De ce <b>vechi</b>? Tehnologia avanseaza asa de repede incat ce e azi <b>nou</b> maine devine <b>vechi</b>.</p>
+                 <figure>
+                     <img sizes="(max-width:500px) 160px, (max-width:1000px) 320px, 640px"
+                          srcset="/resurse/imagini/calculator_vechi_mic.jpg 160w, /resurse/imagini/calculator_vechi_mediu.jpg 320w, /resurse/imagini/calculator_vechi.jpg 640w"
+                          alt="Calculator vechi"
+                          src="/resurse/imagini/calculator_vechi.jpg">
+                     <figcaption>Calculator <b>vechi</b></figcaption>
+                </figure>
+                <a href="/resurse/imagini/calculator_vechi.jpg" download>Daca doresti imaginea da click aici.</a>
+             </aside>
+            <p>Suntem o echipa tanara dornici sa va asistam in alegerea unui desktop <b>PC</b> sau a unui <b>laptop</b> potrivit nevoilor dumneavoastra.</p>
+            <p>De asemenea, la noi veti gasi o gama variata de accesorii precum: <b>mouse-uri</b>, <b>tastaturi</b>, <b>monitoare</b> si <b>casti</b>.</p>
+            <p>Calculatoare <b>noi</b> si <b>vechi</b> <abbr title="Societate cu raspundere limitata">SRL</abbr>, <abbr title="Cod unic de inregistrare">CUI</abbr> 111</p>
+        </main>
+        <%-include("../fragmente/footer.ejs");%>
+    </body>
+</html>
