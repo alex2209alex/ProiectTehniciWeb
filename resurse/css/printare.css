@@ -12,6 +12,22 @@
     img, figure, video, .iframe, .flex-box {
         display: none;
     }
+    ins {
+        color: var(--negru);
+    }
+    #watermark {
+        display: block;
+        position: fixed;
+        width: 4cm;
+        height: 1cm;
+        right: 0;
+        bottom: 0;
+        border: 3px solid var(--negru);
+        border-radius: 20%;
+        opacity: 0.4;
+        text-align: center;
+        color: var(--negru);
+    }
 }
 @page {
     size: A4 portrait;
