@@ -4,3 +4,8 @@ video {
 h2 {
     text-align: center;
 }
+::cue {
+    background: linear-gradient(var(--negru), var(--albastru-inchis));
+    -webkit-background-clip: text;
+    color: transparent;
+}
