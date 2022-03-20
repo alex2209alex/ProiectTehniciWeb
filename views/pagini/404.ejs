@@ -3,6 +3,7 @@
     <head>
         <title>Eroare 404</title>
         <%-include("../fragmente/head.ejs");%>
+        <link rel="stylesheet" href="/resurse/css/404.css">
     </head>
     <body>
         <header>
@@ -10,9 +11,10 @@
             <h1>Eroare 404</h1>
         </header>
         <%-include("../fragmente/nav.ejs");%>
+        <%-include("../fragmente/printare.ejs");%>
         <main>
-            <h2 style="text-align: center">Pagina cautata nu exista</h2>
-            <img style="width: 100%" src="/resurse/imagini/404.webp" alt="404">
+            <h2>Pagina cautata nu exista</h2>
+            <img src="/resurse/imagini/404.webp" alt="404">
         </main>
         <%-include("../fragmente/footer.ejs");%>
     </body>
