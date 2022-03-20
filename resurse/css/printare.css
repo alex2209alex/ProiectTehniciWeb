@@ -5,6 +5,10 @@
     #link-top {
         display: none;
     }
+    a {
+        text-decoration: none;
+        color: var(--negru);
+    }
 }
 @page {
     size: A4 portrait;
