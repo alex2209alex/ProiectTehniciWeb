@@ -1,0 +1,19 @@
+#watermark, #absolut {
+    display:none;
+}
+@media print {
+    #link-top {
+        display: none;
+    }
+}
+@page {
+    size: A4 portrait;
+}
+@page:left {
+    margin-left: 3cm;
+    margin-right: 1cm;
+}
+@page:right {
+    margin-right: 3cm;
+    margin-left: 1cm;
+}
