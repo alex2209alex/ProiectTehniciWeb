@@ -15,9 +15,14 @@
     ins {
         color: var(--negru);
     }
+    h1{
+        text-align:center;
+        margin-left:1cm;
+    }
     #watermark {
         display: block;
         position: fixed;
+        font-weight: bold;
         width: 4cm;
         height: 1cm;
         right: 0;
