@@ -4,13 +4,15 @@
         <title>Calculatoare noi si vechi - despre</title>
         <meta name="keywords" content="PC, laptop, mouse, tastatura, monitor, casti, noi, vechi">
         <meta name="description" content="Magazin Calculatoare si Periferice PC Online">
+        <link rel="stylesheet" href="/resurse/css/despre.css">
         <%-include("../fragmente/head.ejs");%>
     </head>
     <body>
         <%-include("../fragmente/header.ejs");%>
         <%-include("../fragmente/nav.ejs");%>
+        <%-include("../fragmente/printare.ejs");%>
         <main>
-             <h2 style="text-align: center">Despre noi</h2>
+             <h2>Despre noi</h2>
             <p>Multumim ca vizitati magazinul nostru online "Calculatoare <b>noi</b> si <b>vechi</b>".</p>
              <aside>
                  <p>De ce <b>vechi</b>? Tehnologia avanseaza asa de repede incat ce e azi <b>nou</b> maine devine <b>vechi</b>.</p>
@@ -20,8 +22,14 @@
                           alt="Calculator vechi"
                           src="/resurse/imagini/calculator_vechi.jpg">
                      <figcaption>Calculator <b>vechi</b></figcaption>
-                </figure>
-                <a href="/resurse/imagini/calculator_vechi.jpg" download>Daca doresti imaginea da click aici.</a>
+                 </figure>
+                 <div><a href="/resurse/imagini/calculator_vechi.jpg" download>Daca doresti imaginea da click aici.</a></div>
+                 <video controls poster="/resurse/imagini/poster_calculator_nou.jpg">
+                     <source src="/resurse/videouri/calculator_nou.mp4" type="video/mp4">
+                     <source src="/resurse/videouri/calculator_nou.ogv" type="video/ogv">
+                     <track default src="/resurse/videouri/tracks/mesaje_ro.vtt" kind="captions" srclang="ro" label="romana"/>
+                     <track src="/resurse/videouri/tracks/mesaje_en.vtt" kind="captions" srclang="en" label="engleza"/>
+                 </video>
              </aside>
             <p>Suntem o echipa tanara dornici sa va asistam in alegerea unui desktop <b>PC</b> sau a unui <b>laptop</b> potrivit nevoilor dumneavoastra.</p>
             <p>De asemenea, la noi veti gasi o gama variata de accesorii precum: <b>mouse-uri</b>, <b>tastaturi</b>, <b>monitoare</b> si <b>casti</b>.</p>
