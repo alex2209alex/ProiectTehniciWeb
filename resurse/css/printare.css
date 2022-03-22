@@ -2,6 +2,15 @@
     display:none;
 }
 @media print {
+    .grid-pagina {
+        display: block;
+    }
+    .grid-pagina section {
+        border: none;
+    }
+    .grid-pagina>div {
+        border: none;
+    }
     #link-top {
         display: none;
     }
@@ -17,8 +26,11 @@
         position: relative;
     }
     nav ul.meniu>li {
-        float: right;
+        float: none;
+        margin-left: 15%;
+        width: 10%;
         list-style-type: disc;
+        text-align: left;
     }
     nav ul.meniu li a, nav ul.meniu li div {
         outline: none;
