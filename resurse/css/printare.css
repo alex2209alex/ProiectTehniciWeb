@@ -1,4 +1,4 @@
-#watermark, #absolut {
+#watermark, #banner {
     display:none;
 }
 @media print {
@@ -12,12 +12,40 @@
     img, figure, video, .iframe, .flex-box {
         display: none;
     }
+    nav {
+        page-break-after: always;
+        position: relative;
+    }
+    nav ul.meniu>li {
+        float: right;
+        list-style-type: disc;
+    }
+    nav ul.meniu li a, nav ul.meniu li div {
+        outline: none;
+        color: var(--negru);
+    }
+    nav ul.meniu>li ul{
+        display: none;
+    }
+    footer {
+        page-break-before: always;
+    }
     ins {
         color: var(--negru);
     }
     h1{
         text-align:center;
         margin-left:1cm;
+    }
+    #banner {
+        display: block;
+        position: absolute;
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+        border: var(--negru) inset 4px;
+        bottom: 0;
+        text-align: center;
     }
     #watermark {
         display: block;
