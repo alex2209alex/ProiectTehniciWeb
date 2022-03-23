@@ -89,3 +89,41 @@ h2 {
 ins {
     color: var(--rosu);
 }
+#program {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#tabel-program {
+    text-align:center;
+}
+th {
+    background-color: var(--albastru-inchis);
+    color: var(--alb);
+}
+#tabel-program {
+    border-collapse: collapse;
+    border: inset 5px var(--negru);
+}
+#tabel-program caption {
+    caption-side: bottom;
+    font-weight: bold;
+}
+tbody tr, tfoot tr {
+    transition: 0.5s outline;
+}
+tbody tr:hover, tfoot tr:hover {
+    outline: 5px solid rgba(255, 10, 71, 0.7);
+}
+td {
+    border-right: 1px solid var(--negru);
+}
+thead tr {
+    border-bottom: 1px solid var(--negru);
+}
+tbody tr:nth-child(odd) {
+    border-bottom: 1px solid var(--alb);
+}
+tbody tr:nth-child(even) {
+    border-bottom: 1px solid var(--negru);
+}

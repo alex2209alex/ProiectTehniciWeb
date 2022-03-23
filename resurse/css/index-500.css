@@ -4,3 +4,12 @@
 .iframe-button {
     width: 50px;
 }
+#program {
+    overflow-x: scroll;
+    align-items: flex-start;
+}
+.continut-etapa-1 ul, .continut-etapa-1 ol, .continut-etapa-1 dl, .continut-etapa-1 dl dd {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
