@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="ro">
     <head>
-        <title>Eroare 403</title>
+        <title><%-locals.titlu%></title>
         <%-include("../fragmente/head.ejs");%>
-        <link rel="stylesheet" href="/resurse/css/403.css">
+        <link rel="stylesheet" href="/resurse/css/eroare.css">
     </head>
     <body>
         <header>
             <link rel="stylesheet" href="/resurse/css/header.css">
-            <h1>Eroare 403 - Acces interzis</h1>
+            <h1><%-locals.titlu%></h1>
         </header>
         <%-include("../fragmente/printare.ejs");%>
         <%-include("../fragmente/nav.ejs");%>
         <main>
-            <h2>Nu aveti acces la aceasta pagina</h2>
-            <img id="eroare403" src="/resurse/imagini/403.webp" alt="403">
+            <h2><%-locals.text%></h2>
+            <img id="imagine-eroare" src="<%-locals.imagine%>" alt="403">
         </main>
         <%-include("../fragmente/footer.ejs");%>
     </body>

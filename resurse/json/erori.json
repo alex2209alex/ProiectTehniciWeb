@@ -1,0 +1,26 @@
+{
+  "cale_baza": "/resurse/imagini/erori",
+  "erori": [
+    {
+      "identificator": 404,
+      "status": true,
+      "titlu": "Eroare 404",
+      "text": "Pagina cautata nu exista",
+      "imagine": "404.webp"
+    },
+    {
+      "identificator": 403,
+      "status": true,
+      "titlu": "Eroare 403 - Acces interzis",
+      "text": "Nu aveti acces la aceasta pagina",
+      "imagine": "403.webp"
+    },
+    {
+      "identificator": 1,
+      "status": false,
+      "titlu": "Site in lucru",
+      "text": "Muncim in continuare la site. Aceasta pagina nu poate fi accesata momentan",
+      "imagine": "403.webp"
+    }
+  ]
+}
