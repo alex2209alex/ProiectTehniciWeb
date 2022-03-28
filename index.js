@@ -2,6 +2,8 @@ const express = require("express");
 const fs = require("fs");
 const sharp = require("sharp");
 
+let obErori;
+
 const app = express();
 app.set("view engine", "ejs");
 
@@ -47,13 +49,15 @@ app.get("/*", function(req, res) {
 });
 
 function creeazaErori() {
-    var buf = fs.readFileSync(__dirname + "/resurse/json/erori.json").toString("utf8");
+    const buf = fs.readFileSync(__dirname + "/resurse/json/erori.json").toString("utf8");
     obErori = JSON.parse(buf);
 }
 creeazaErori();
 
 function randeazaEroare(res, identificator, titlu, text, imagine) {
-    var eroare = obErori.erori.find(function (elem) {return elem.identificator === identificator;});
+    const eroare = obErori.erori.find(function (elem) {
+        return elem.identificator === identificator;
+    });
     titlu = titlu || (eroare && eroare.titlu) || "Titlu eroare custum";
     text = text || (eroare && eroare.text) || "Text eroare custum";
     imagine = imagine || (eroare && (obErori.cale_baza + "/" + eroare.imagine)) || "Imagine eroare custum";
