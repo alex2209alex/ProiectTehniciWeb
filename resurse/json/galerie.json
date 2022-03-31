@@ -1,0 +1,132 @@
+{
+  "cale_galerie":"/resurse/imagini/galerie",
+  "imagini": [
+    {
+      "cale_fisier":"monitor.png",
+      "titlu":"Monitor",
+      "text_descriere":"Monitor PC",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"headset.png",
+      "titlu":"Casti",
+      "text_descriere":"Headset",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"webcam.jpg",
+      "titlu":"Webcam",
+      "text_descriere":"Camera web",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"desktoppc.jpg",
+      "titlu":"Desktop PC",
+      "text_descriere":"Desktop PC",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"mouse.jpg",
+      "titlu":"Mouse",
+      "text_descriere":"Mouse",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"tastatura.jpg",
+      "titlu":"Tastatura",
+      "text_descriere":"Tastatura",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"mousepad.jpg",
+      "titlu":"Mousepad",
+      "text_descriere":"Mousepad",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"microfon.jpg",
+      "titlu":"Microfon",
+      "text_descriere":"Microfon",
+      "anotimp":"primavara",
+      "atribuire":"Imagine luata de pe emag.ro"
+    },
+    {
+      "cale_fisier":"laptop.jpg",
+      "titlu":"Laptop",
+      "text_descriere":"Laptop",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"pc-laptop.jpg",
+      "titlu":"PC si laptop",
+      "text_descriere":"PC si laptop",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"laptop-2.jpg",
+      "titlu":"Laptop",
+      "text_descriere":"Laptop",
+      "anotimp":"primavara"
+    },
+    {
+      "cale_fisier":"laptop-2.jpg",
+      "titlu":"Laptop",
+      "text_descriere":"Laptop",
+      "anotimp":"vara"
+    },
+    {
+      "cale_fisier":"pc-laptop.jpg",
+      "titlu":"PC si laptop",
+      "text_descriere":"PC si laptop",
+      "anotimp":"vara"
+    },
+    {
+      "cale_fisier":"laptop.jpg",
+      "titlu":"Laptop",
+      "text_descriere":"Laptop",
+      "anotimp":"vara"
+    },
+    {
+      "cale_fisier":"laptop.jpg",
+      "titlu":"Laptop",
+      "text_descriere":"Laptop",
+      "anotimp":"toamna"
+    },
+    {
+      "cale_fisier":"laptop-2.jpg",
+      "titlu":"PC si laptop",
+      "text_descriere":"PC si laptop",
+      "anotimp":"toamna"
+    },
+    {
+      "cale_fisier":"pc-laptop.jpg",
+      "titlu":"Laptop",
+      "text_descriere":"Laptop",
+      "anotimp":"toamna"
+    },
+    {
+      "cale_fisier":"laptop.jpg",
+      "titlu":"Laptop",
+      "text_descriere":"Laptop",
+      "anotimp":"iarna"
+    },
+    {
+      "cale_fisier":"laptop-2.jpg",
+      "titlu":"PC si laptop",
+      "text_descriere":"PC si laptop",
+      "anotimp":"iarna"
+    },
+    {
+      "cale_fisier":"pc-laptop.jpg",
+      "titlu":"Laptop",
+      "text_descriere":"Laptop",
+      "anotimp":"iarna"
+    },
+    {
+      "cale_fisier":"headset.png",
+      "titlu":"Casti",
+      "text_descriere":"Headset",
+      "anotimp":"iarna"
+    }
+  ]
+}

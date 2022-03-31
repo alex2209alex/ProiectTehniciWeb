@@ -1,0 +1,100 @@
+#poza1 {
+    grid-area: poza1;
+}
+#poza2 {
+    grid-area: poza2;
+}
+#poza3 {
+    grid-area: poza3;
+}
+#poza4 {
+    grid-area: poza4;
+}
+#poza5 {
+    grid-area: poza5;
+}
+#poza6 {
+    grid-area: poza6;
+}
+#poza7 {
+    grid-area: poza7;
+}
+#poza8 {
+    grid-area: poza8;
+}
+#poza9 {
+    grid-area: poza9;
+}
+#poza10 {
+    grid-area: poza10;
+}
+#spatiu1 {
+    grid-area: spatiu1;
+}
+#spatiu2 {
+    grid-area: spatiu2;
+}
+#grid-galerie {
+    display: grid;
+    grid-template-areas:
+    'poza1 poza2 poza3'
+    'poza4 spatiu1 poza5'
+    'poza6 poza7 poza8'
+    'poza9 spatiu2 poza10';
+    grid-row-gap: 0.5em;
+    grid-column-gap: 0.5em;
+    width: 100%;
+}
+p {
+    text-align: center;
+}
+#galerie-statica {
+    counter-reset: counter-imagini;
+}
+figcaption:before {
+    counter-increment: counter-imagini;
+    content: counter(counter-imagini, lower-roman) ". ";
+}
+@media screen and (max-width:1000px) and (min-width: 500px) {
+    #grid-galerie {
+        display:grid;
+        grid-template-areas:
+        'poza1 poza2'
+        'poza3 poza4'
+        'poza5 poza6'
+        'poza7 poza8'
+        'poza9 poza10';
+    }
+}
+h2 {
+    text-align: center;
+}
+#galerie-statica figure {
+    border: 3px solid var(--negru);
+    padding: 10px;
+    background-color: var(--albastru-deschis);
+}
+#grid-galerie img {
+    width: 100%;
+    background-color: var(--albastru-inchis);
+    transition: all 0.125s;
+}
+#grid-galerie img:hover {
+    transform: scale(1.4);
+    transform-origin: top;
+    opacity: 50%;
+    border-radius: 15px;
+}
+#grid-galerie figcaption {
+    text-align:center;
+    width: 100%;
+    color: var(--negru);
+}
+@media screen and (max-width:500px) {
+    #grid-galerie {
+        display:block;
+    }
+    #grid-galerie div {
+        display: none;
+    }
+}

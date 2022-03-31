@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/resurse/css/galerie-statica.css">
+<section id="galerie-statica">
+    <h2>Exemplu de setup PC</h2>
+    <div id="grid-galerie">
+        <%
+        const d = new Date();
+        let anotimp = "toamna";
+        if(d.getMonth() <= 1 || d.getMonth() === 11)
+            anotimp = "iarna";
+        else if(d.getMonth() <= 4)
+            anotimp = "primavara";
+        else if(d.getMonth() <= 7)
+            anotimp = "vara";
+        let linie = 1;
+        let elemente = 0;
+        let coloana = 1;
+        let i = 1;
+        let j = 1;
+        for(let imag of locals.imagini) {
+            if (imag.anotimp && imag.anotimp === anotimp && (linie % 2 === 1 || coloana !== 2)) {
+        %>
+                <figure id="poza<%-i%>" title="<%-imag.text_descriere%>">
+                    <%i++;%>
+                    <picture>
+                        <source media="(max-width:500px)" srcset="<%-imag.mic%>">
+                        <source media="(max-width:1000px)" srcset="<%-imag.mediu%>">
+                        <img src="<%-imag.mare%>" alt="<%-imag.titlu%>">
+                    </picture>
+                    <figcaption><%-imag.titlu%></figcaption>
+                    <p><%-imag.atribuire%></p>
+                </figure>
+        <%
+            elemente++;
+            coloana++;
+            }
+            else if (imag.anotimp && imag.anotimp === anotimp) {
+                coloana += 2;
+                elemente++;
+            %>
+                <div class="spatiu-gol" id="spatiu<%-j%>">
+                    <%j++;%>
+                </div>
+                <figure id="poza<%-i%>" title="<%-imag.text_descriere%>">
+                    <%i++;%>
+                    <picture>
+                        <source media="(max-width:500px)" srcset="<%-imag.mic%>">
+                        <source media="(max-width:1000px)" srcset="<%-imag.mediu%>">
+                        <img src="<%-imag.mare%>" alt="<%-imag.titlu%>">
+                    </picture>
+                    <figcaption><%-imag.titlu%></figcaption>
+                    <p><%-imag.atribuire%></p>
+                </figure>
+            <%
+            }
+            if(coloana === 4) {
+                linie += 1;
+                coloana = 1;
+            }
+            if(elemente === 10) {
+                break;
+            }
+        }
+        %>
+    </div>
+</section>

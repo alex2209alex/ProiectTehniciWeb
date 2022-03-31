@@ -25,6 +25,9 @@
 .continut-etapa-1 {
     grid-area: area8;
 }
+#galerie-statica {
+    grid-area: area9;
+}
 .grid-pagina {
     display: grid;
     padding: 20px;
@@ -33,9 +36,10 @@
     'area1 area1 area1 area1'
     'area3 area2 area2 area4'
     'area8 area8 area8 area8'
-    'area7 area7 area5 area6';
+    'area7 area7 area5 area6'
+    'area9 area9 area9 area9';
 }
-.prezentare, .tabel, .calendar-evenimente, .anunturi, .utilizatori-online, .utilizator-statistici, .site-server, .continut-etapa-1 {
+.prezentare, .tabel, .calendar-evenimente, .anunturi, .utilizatori-online, .utilizator-statistici, .site-server, .continut-etapa-1, #galerie-statica {
     border: solid 1px var(--albastru-inchis);
     margin: 10px;
 }

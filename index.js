@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const sharp = require("sharp");
 
-let obErori;
+let obErori, obImagini;
 
 const app = express();
 app.set("view engine", "ejs");
@@ -10,7 +10,16 @@ app.set("view engine", "ejs");
 app.use("/resurse", express.static(__dirname + "/resurse"));
 
 app.get(["/", "/index", "/home"], function (req, res) {
-    res.render("pagini/index", {ip: req.ip});
+    res.render("pagini/index", {ip: req.ip, imagini: obImagini.imagini});
+    res.end();
+});
+
+app.get("/galerie", function (req, res) {
+    res.render("pagini/galerie_statica", {imagini: obImagini.imagini});
+    res.end();
+});
+
+app.get("/produse", function(req, res) {
     res.end();
 });
 
@@ -47,6 +56,25 @@ app.get("/*", function(req, res) {
     }
     res.end();
 });
+
+function creeazaImagini() {
+    const buf = fs.readFileSync(__dirname+"/resurse/json/galerie.json").toString("utf8");
+    obImagini = JSON.parse(buf);
+    for(let imag of obImagini.imagini) {
+        let nume_imag;
+        [nume_imag, ] = imag.cale_fisier.split(".");
+        let dim_mic = 150;
+        imag.mic = `${obImagini.cale_galerie}/mic/${nume_imag}-${dim_mic}.webp`;
+        imag.mare = `${obImagini.cale_galerie}/${imag.cale_fisier}`;
+        if (!fs.existsSync(imag.mic))
+            sharp(__dirname+"/" + imag.mare).resize(dim_mic).toFile(__dirname + "/" + imag.mic);
+        let dim_mediu = 300;
+        imag.mediu = `${obImagini.cale_galerie}/mediu/${nume_imag}-${dim_mediu}.png`;
+        if (!fs.existsSync(imag.mediu))
+            sharp(__dirname + "/" + imag.mare).resize(dim_mediu).toFile(__dirname + "/" + imag.mediu);
+    }
+}
+creeazaImagini();
 
 function creeazaErori() {
     const buf = fs.readFileSync(__dirname + "/resurse/json/erori.json").toString("utf8");
