@@ -85,6 +85,12 @@ h2 {
     opacity: 50%;
     border-radius: 15px;
 }
+#grid-galerie figure {
+    transition: all;
+}
+#grid-galerie figure:hover {
+    border: none;
+}
 #grid-galerie figcaption {
     text-align:center;
     width: 100%;
