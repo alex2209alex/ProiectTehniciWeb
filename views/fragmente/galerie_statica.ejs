@@ -17,7 +17,7 @@
         let i = 1;
         let j = 1;
         for(let imag of locals.imagini) {
-            if (imag.anotimp && imag.anotimp === anotimp && (linie % 2 === 1 || coloana !== 2)) {
+            if(imag.anotimp && imag.anotimp === anotimp && (linie % 2 === 1 || coloana !== 2)) {
         %>
                 <figure id="poza<%-i%>" title="<%-imag.text_descriere%>">
                     <%i++;%>
@@ -30,13 +30,13 @@
                     <p><%-imag.atribuire%></p>
                 </figure>
         <%
-            elemente++;
-            coloana++;
+                elemente++;
+                coloana++;
             }
-            else if (imag.anotimp && imag.anotimp === anotimp) {
+            else if(imag.anotimp && imag.anotimp === anotimp) {
                 coloana += 2;
                 elemente++;
-            %>
+        %>
                 <div class="spatiu-gol" id="spatiu<%-j%>">
                     <%j++;%>
                 </div>
@@ -50,7 +50,7 @@
                     <figcaption><%-imag.titlu%></figcaption>
                     <p><%-imag.atribuire%></p>
                 </figure>
-            <%
+        <%
             }
             if(coloana === 4) {
                 linie += 1;
