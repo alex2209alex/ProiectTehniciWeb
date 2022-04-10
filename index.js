@@ -1,7 +1,15 @@
 const express = require("express");
 const fs = require("fs");
 const sharp = require("sharp");
+const sass = require("sass");
+const path = require("path");
+const ejs = require("ejs");
 
+let random_6_13 = 6 + Math.floor(Math.random() * 8);
+let random_6_12_even = random_6_13;
+if(random_6_13 % 2 === 1) {
+    random_6_12_even -= 1;
+}
 let obErori, obImagini;
 
 const app = express();
@@ -11,6 +19,39 @@ app.use("/resurse", express.static(__dirname + "/resurse"));
 
 app.get(["/", "/index", "/home"], function (req, res) {
     res.render("pagini/index", {ip: req.ip, imagini: obImagini.imagini});
+    res.end();
+});
+
+app.get("*/galerie_animata.css", function (req, res) {
+    const sirScss = fs.readFileSync(__dirname + "/resurse/scss/galerie_animata.scss").toString("utf8");
+    const rezScss = ejs.render(sirScss,{nrImagini: random_6_12_even});
+    const caleScss = __dirname + "/temp/galerie_animata.scss";
+    fs.writeFileSync(caleScss,rezScss);
+    let rezCompilare;
+    try {
+        rezCompilare = sass.compile(caleScss, {sourceMap:true});
+        const caleCss = __dirname + "/temp/galerie_animata.css";
+        fs.writeFileSync(caleCss, rezCompilare.css);
+        res.setHeader("Content-Type", "text/css");
+        res.sendFile(caleCss);
+    }
+    catch(err) {
+        console.log(err);
+        randeazaEroare(res, "Ai busit ceva la site");
+    }
+    random_6_13 = 6 + Math.floor(Math.random() * 8);
+    random_6_12_even = random_6_13;
+    if(random_6_13 % 2 === 1) {
+        random_6_12_even -= 1;
+    }
+});
+
+app.get("*/galerie_animata.css.map",function(req, res){
+    res.sendFile(path.join(__dirname,"temp/galerie_animata.css.map"));
+});
+
+app.get("/galerie_animata", function(req, res) {
+    res.render("pagini/galerie_animata", {imagini: obImagini.imagini, numarImagini: random_6_12_even}) ;
     res.end();
 });
 
