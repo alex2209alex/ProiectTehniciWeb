@@ -69,6 +69,12 @@
       "anotimp":"primavara"
     },
     {
+      "cale_fisier":"monitor.png",
+      "titlu":"Monitor",
+      "text_descriere":"Monitor PC",
+      "anotimp":"primavara"
+    },
+    {
       "cale_fisier":"laptop-2.jpg",
       "titlu":"Laptop",
       "text_descriere":"Laptop",
