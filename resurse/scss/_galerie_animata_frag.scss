@@ -1,0 +1,88 @@
+$nr-imagini: 7 !default;
+$inaltime-galerie: 200px;
+$timp-animatie: 3s;
+* {
+  margin: 0;
+  padding: 0;
+}
+#galerie-animata {
+  margin: 3rem;
+  width: 400px;
+  height: $inaltime-galerie;
+  border: 5px solid transparent;
+  border-image: url("/resurse/imagini/erori/404.webp") 10 round;
+  position: relative;
+  overflow: hidden;
+  figure {
+    background: var(--albastru-inchis);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: $inaltime-galerie;
+    animation-name: galerie_animata;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-duration: $nr-imagini * $timp-animatie;
+    &:hover {
+      animation-play-state: paused;
+    }
+    img {
+      width: 400px;
+    }
+    figcaption {
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      background: var(--alb);
+    }
+  }
+}
+@for $i from 1 through $nr-imagini {
+  #galerie-animata figure:nth-of-type(#{$i}) {
+    animation-delay: ($nr-imagini - $i) * $timp-animatie;
+    z-index: 0;
+  }
+}
+@media screen and (max-width: 1000px) {
+  #galerie-animata {
+    display: none;
+  }
+}
+@keyframes galerie_animata {
+  0% {
+    z-index: 100;
+    opacity: 1;
+    transform: translateX(0);
+  }
+  4% {
+    opacity: 1;
+    transform: translateX(10%);
+  }
+  8% {
+    z-index: 100;
+    opacity: 0.5;
+    transform: translateX(0%);
+  }
+  12% {
+    z-index: 100;
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  20% {
+    z-index: -10;
+    transform: translateX(0);
+  }
+  30% {
+    z-index: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  90% {
+    z-index: -10;
+    opacity: 1;
+  }
+}

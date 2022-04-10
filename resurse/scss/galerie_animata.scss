@@ -1,0 +1,3 @@
+@use '../resurse/scss/galerie_animata_frag' with (
+  $nr-imagini: <%- locals.nrImagini %>
+);

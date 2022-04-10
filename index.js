@@ -55,7 +55,7 @@ app.get("/galerie_animata", function(req, res) {
     res.end();
 });
 
-app.get("/galerie", function (req, res) {
+app.get("/galerie_statica", function (req, res) {
     res.render("pagini/galerie_statica", {imagini: obImagini.imagini});
     res.end();
 });
