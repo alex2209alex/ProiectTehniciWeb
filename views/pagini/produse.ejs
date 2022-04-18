@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <title>Calculatoare noi si vechi - produse</title>
+        <meta name="keywords" content="PC, laptop, mouse, tastatura, monitor, casti, gaming, lei">
+        <meta name="description" content="Magazin Calculatoare si Periferice PC Online">
+        <%-include("../fragmente/head.ejs");%>
+        <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css"/>
+    </head>
+    <body>
+        <%-include("../fragmente/header");%>
+        <%-include("../fragmente/printare.ejs");%>
+        <%-include("../fragmente/nav.ejs");%>
+        <main>
+            <h2>Produse</h2>
+            <div class="grid-produse">
+                <%for(let prod of locals.produse) {%>
+                    <article class="produs">
+                        <h3>Nume: <a href="/produs/<%-prod.id%>" ><span class="val-nume"><%-prod.nume%></span></a></h3>
+                        <div class="info-prod">
+                            <p>Pret: <span><%-prod.pret%></span></p>
+                            <p>Reducere: <span><%-prod.reducere%></span></p>
+                            <p>Producator: <span><%-prod.producator%></span></p>
+                        </div>
+                        <p class="categorie">Categorie:<span><%-prod.categorie%></span></p>
+                        <figure>
+                            <a href="/produs/<%-prod.id%>"><img src="/resurse/imagini/produse/<%-prod.imagine%>" style="width:50%;height:auto;" alt="[imagine <%-prod.nume%>]"/></a>
+                        </figure>
+                        <label class="selecteaza-cos">
+                            Selectează:<br/>
+                            <input type="checkbox" class="select-cos" value="<%-prod.id%>" autocomplete="off">
+                        </label>
+                    </article>
+                <%}%>
+            </div>
+        </main>
+        <%-include("../fragmente/footer");%>
+    </body>
+</html>
