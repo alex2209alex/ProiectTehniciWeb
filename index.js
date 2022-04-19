@@ -6,8 +6,15 @@ const path = require("path");
 const ejs = require("ejs");
 const {Client} = require("pg");
 
-var client = new Client({database: "Calculatoare Noi si Vechi", user: "alex", password: "alex", host: "localhost", port: 5433});
+const client = new Client({database: "Calculatoare Noi si Vechi", user: "alex", password: "alex", host: "localhost", port: 5433});
 client.connect();
+
+let categorii = [];
+client.query("select * from unnest(enum_range(null::categ_produse))", function(err, rezCateg) {
+    for(const elem of rezCateg.rows) {
+        categorii.push(elem.unnest);
+    }
+});
 
 let random_6_13 = 6 + Math.floor(Math.random() * 8);
 let random_6_12_even = random_6_13;
@@ -22,19 +29,41 @@ app.set("view engine", "ejs");
 app.use("/resurse", express.static(__dirname + "/resurse"));
 
 app.get(["/", "/index", "/home"], function(req, res) {
-    res.render("pagini/index", {ip: req.ip, imagini: obImagini.imagini});
+    res.render("pagini/index", {ip: req.ip, imagini: obImagini.imagini, categorii: categorii});
     res.end();
 });
 
 app.get("/produse", function(req, res) {
-    client.query("SELECT * FROM produse", function(err, rezQuery) {
-        res.render("pagini/produse", {produse: rezQuery.rows});
+    if(!req.query.tip) {
+        client.query("SELECT * FROM produse", function(err, rezQuery) {
+            res.render("pagini/produse", {produse: rezQuery.rows, categorii: categorii});
+        });
+    }
+    else if(categorii.includes(req.query.tip)) {
+        const cond_where = req.query.tip ? ` categorie = '${req.query.tip}'` : " 1 = 1";
+        client.query("SELECT * FROM produse WHERE" + cond_where, function(err, rezProd) {
+            res.render("pagini/produse", {produse: rezProd.rows, categorii: categorii});
+        });
+    }
+    else {
+        randeazaEroare(res, 404);
+    }
+});
+
+app.get("/produs/:id", function(req, res) {
+    client.query(`SELECT * FROM produse WHERE id = ${req.params.id}`, function(err, rezQuery) {
+        if(rezQuery.rows.length === 1) {
+            res.render("pagini/produs", {prod: rezQuery.rows[0], categorii: categorii});
+        }
+        else {
+            randeazaEroare(res,404);
+        }
     });
 });
 
 app.get("*/galerie_animata.css", function(req, res) {
     const sirScss = fs.readFileSync(__dirname + "/resurse/scss/galerie_animata.scss").toString("utf8");
-    const rezScss = ejs.render(sirScss,{nrImagini: random_6_12_even});
+    const rezScss = ejs.render(sirScss,{nrImagini: random_6_12_even, categorii: categorii});
     const caleScss = __dirname + "/temp/galerie_animata.scss";
     fs.writeFileSync(caleScss,rezScss);
     let rezCompilare;
@@ -61,12 +90,12 @@ app.get("*/galerie_animata.css.map",function(req, res){
 });
 
 app.get("/galerie_animata", function(req, res) {
-    res.render("pagini/galerie_animata", {imagini: obImagini.imagini, numarImagini: random_6_12_even}) ;
+    res.render("pagini/galerie_animata", {imagini: obImagini.imagini, numarImagini: random_6_12_even, categorii: categorii}) ;
     res.end();
 });
 
 app.get("/galerie_statica", function(req, res) {
-    res.render("pagini/galerie_statica", {imagini: obImagini.imagini});
+    res.render("pagini/galerie_statica", {imagini: obImagini.imagini, categorii: categorii});
     res.end();
 });
 
@@ -93,7 +122,6 @@ app.get("/*", function(req, res) {
                 }
             }
             else {
-                console.log(rezRender);
                 res.send(rezRender);
             }
         });
@@ -138,7 +166,7 @@ function randeazaEroare(res, identificator, titlu, text, imagine) {
     imagine = imagine || (eroare && (obErori.cale_baza + "/" + eroare.imagine)) || "Imagine eroare custum";
     if(eroare && eroare.status)
         res.status(eroare.identificator);
-    res.render("pagini/eroare_generala", {titlu: titlu, text: text, imagine: imagine});
+    res.render("pagini/eroare_generala", {titlu: titlu, text: text, imagine: imagine, categorii: categorii});
     res.end();
 }
 

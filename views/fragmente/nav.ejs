@@ -14,9 +14,12 @@
             </ul>
         </li>
         <li><div><a href="/despre">Despre noi</a></div></li>
-        <li><div><a href="/produse">Produse</a></div>
+        <li><div>Produse</div>
             <ul>
-                <li>In lucru<i class="fa fa-cog fa-spin"></i></li>
+                <li><a href="/produse">toate</a></li>
+                <%for(categ of locals.categorii) {%>
+                    <li><a href="/produse?tip=<%-categ%>"><%-categ%></a></li>
+                <%}%>
             </ul>
         </li>
         <li><div><a href="servicii.html">Servicii</a></div>

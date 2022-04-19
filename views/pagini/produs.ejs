@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+        <title>Calculatoare noi si vechi - produs</title>
+        <meta name="keywords" content="PC, laptop, mouse, tastatura, monitor, casti, gaming, lei">
+        <meta name="description" content="Magazin Calculatoare si Periferice PC Online">
+        <%-include("../fragmente/head.ejs");%>
+        <link rel="stylesheet" href="/resurse/css/produs.css" type="text/css"/>
+    </head>
+    <body>
+        <%-include("../fragmente/header");%>
+        <%-include("../fragmente/printare.ejs");%>
+        <%-include("../fragmente/nav.ejs");%>
+        <main>
+            <section>
+                <h2>Pagină produs</h2>
+                    <article id="art-produs">
+                        <h3><span class="nume"><%-locals.prod.nume%></span></h3>
+                        <p>Pret: <span class="pret"><%- locals.prod.pret %></span></p>
+                        <p>Reducere: <span class="reducere"><%- locals.prod.reducere %></span></p>
+                        <p>Descriere: <span class="descriere"><%-locals.prod.descriere%></span></p>
+                        <p>Categorie: <span class="categorie"><%-locals.prod.categorie%></span></p>
+                        <p>Tip produs: <span class="categorie"><%-locals.prod.tip_produs%></span></p>
+                        <p>Data adăugare: <span><%-locals.prod.data_adaugare%></span></p>
+                        <p>Producator: <span class="producator"><%- locals.prod.producator %></span></p>
+                        <p>Caracteristici: <span class="caracteristici"><%-locals.prod.caracteristici%></span></p>
+                        <p>Returnare: <span class="returnare"><%-locals.prod.returnare%></span></p>
+                        <figure class="imag-produs">
+                            <img src="/resurse/imagini/produse/<%-locals.prod.imagine%>" alt="[imagine <%-locals.prod.nume%>]" />
+                            <figcaption>Sursa imagine: <span><%-locals.prod.sursa_imagine%></span></figcaption>
+                        </figure>
+                    </article>
+            </section>
+        </main>
+        <%- include("../fragmente/footer") %>
+    </body>
+</html>

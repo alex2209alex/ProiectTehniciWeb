@@ -1,0 +1,48 @@
+h2 {
+    padding: 0.4rem;
+    text-align: center;
+}
+h3 {
+    color: var(--alb);
+    text-align: center;
+}
+#art-produs {
+    margin: 0 auto;
+    width: 70%;
+    max-width: 700px;
+    background-color: var(--albastru-inchis);
+    box-shadow: 0 0 10px 5px var(--negru);
+    padding: 0.4rem;
+}
+#art-produs p {
+    margin: 0;
+    padding: 0.4rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+#art-produs p span {
+    font-weight: normal;
+}
+#art-produs p:nth-of-type(even) {
+    background-color: var(--albastru-deschis);
+}
+#art-produs p:nth-of-type(odd) {
+    background-color: var(--alb);
+}
+#art-produs figcaption {
+    color: var(--alb);
+    text-align: center;
+}
+.imag-produs {
+    text-align: center;
+}
+.imag-produs img {
+    width: 50%;
+    height: auto;
+}
+@media screen and (max-width: 700px){
+    #art-produs {
+        margin: 0 auto;
+        width: 95%;
+    }
+}
