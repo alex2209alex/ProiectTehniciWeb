@@ -33,6 +33,11 @@ app.get(["/", "/index", "/home"], function(req, res) {
     res.end();
 });
 
+app.get("/despre", function(req,res) {
+    res.render("pagini/despre", {categorii: categorii});
+    res.end();
+});
+
 app.get("/produse", function(req, res) {
     if(!req.query.tip) {
         client.query("SELECT * FROM produse", function(err, rezQuery) {

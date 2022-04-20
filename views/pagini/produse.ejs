@@ -15,16 +15,83 @@
             <h2>Produse</h2>
             <div class="grid-produse">
                 <%for(let prod of locals.produse) {%>
-                    <article class="produs">
-                        <h3>Nume: <a href="/produs/<%-prod.id%>" ><span class="val-nume"><%-prod.nume%></span></a></h3>
-                        <div class="info-prod">
-                            <p>Pret: <span><%-prod.pret%></span></p>
-                            <p>Reducere: <span><%-prod.reducere%></span></p>
-                            <p>Producator: <span><%-prod.producator%></span></p>
-                        </div>
-                        <p class="categorie">Categorie:<span><%-prod.categorie%></span></p>
-                        <figure>
-                            <a href="/produs/<%-prod.id%>"><img src="/resurse/imagini/produse/<%-prod.imagine%>" style="width:50%;height:auto;" alt="[imagine <%-prod.nume%>]"/></a>
+                    <article class="produs <%-prod.categorie%>" id="artc-<%-prod.id%>">
+                        <h3 class="nume">Nume: <a href="/produs/<%-prod.id%>" ><span class="val-nume"><%-prod.nume%></span></a></h3>
+                        <%
+                            let zi_saptamana = prod.data_adaugare.toString().slice(0,3);
+                            const zi_luna = prod.data_adaugare.toString().slice(8,10);
+                            let luna = prod.data_adaugare.toString().slice(4,7);
+                            const an = prod.data_adaugare.toString().slice(11,15);
+                            if(zi_saptamana === "Mon") {
+                                zi_saptamana = "Luni";
+                            }
+                            else if(zi_saptamana === "Tue") {
+                                zi_saptamana = "Marti";
+                            }
+                            else if(zi_saptamana === "Wed") {
+                                zi_saptamana = "Miercuri";
+                            }
+                            else if(zi_saptamana === "Thu") {
+                                zi_saptamana = "Joi";
+                            }
+                            else if(zi_saptamana === "Fri") {
+                                zi_saptamana = "Vineri";
+                            }
+                            else if(zi_saptamana === "Sat") {
+                                zi_saptamana = "Sambata";
+                            }
+                            else {
+                                zi_saptamana = "Duminica";
+                            }
+                            if(luna === "Jan") {
+                                luna = "Ianuarie";
+                            }
+                            else if(luna === "Feb") {
+                                luna = "Februarie";
+                            }
+                            else if(luna === "Mar") {
+                                luna = "Martie";
+                            }
+                            else if(luna === "Apr") {
+                                luna = "Aprilie";
+                            }
+                            else if(luna === "May") {
+                                luna = "Mai";
+                            }
+                            else if(luna === "Jun") {
+                                luna = "Iunie";
+                            }
+                            else if(luna === "Jul") {
+                                luna = "Iulie";
+                            }
+                            else if(luna === "Aug") {
+                                luna = "August";
+                            }
+                            else if(luna === "Sep") {
+                                luna = "Septembrie";
+                            }
+                            else if(luna === "Oct") {
+                                luna = "Octombrie";
+                            }
+                            else if(luna === "Nov") {
+                                luna = "Noiembrie";
+                            }
+                            else {
+                                luna = "Decembrie";
+                            }
+                        %>
+                        <ul>
+                            <li><p class="pret">Pret: <span><%-prod.pret%></span></p></li>
+                            <li><p class="producator">Producator: <span><%-prod.producator%></span></p></li>
+                            <li><p class="caracteristici">Caracteristici: <span><%-prod.caracteristici%></span></p></li>
+                            <li><p class="timp">Data adaugare: <time><%-zi_saptamana%> <%-zi_luna%> <%-luna%> <%-an%></time></p></li>
+                            <li><p class="returnare">Returnare: <span><%-prod.returnare%></span></p></li>
+                        </ul>
+                        <p class="categorie">Categorie: <span><%-prod.categorie%></span></p>
+                        <p class="descriere">Descriere: <span><%-prod.descriere%></span></p>
+                        <figure class="poza">
+                            <a href="/produs/<%-prod.id%>"><img src="/resurse/imagini/produse/<%-prod.imagine%>" alt="[imagine <%-prod.nume%>]"/></a>
+                            <figcaption class="sursa_imagine">Sursa imagine: <span><%-prod.sursa_imagine%></span></figcaption>
                         </figure>
                         <label class="selecteaza-cos">
                             Selectează:<br/>

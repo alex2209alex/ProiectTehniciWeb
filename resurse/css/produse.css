@@ -3,9 +3,71 @@ main {
     padding-left: var(--padd-main);
     padding-right: var(--padd-main);
 }
-.grid-produse {
+.nume {
+    grid-area: nume;
+}
+.poza {
+    grid-area: imagine;
+    width: 50%;
+    height: auto;
+    float: right;
+}
+.poza img {
+    width: 100%;
+}
+.pret {
+    grid-area: pret;
+}
+.producator {
+    grid-area: producator;
+}
+.caracteristici {
+    grid-area: caracteristici;
+}
+.timp {
+    grid-area: timp;
+}
+article {
+    margin-bottom: 3rem;
+}
+.returnare {
+    grid-area: returnare;
+}
+.produs p {
+    color: var(--rosu);
+    font-weight: bold;
+}
+.produs p>span {
+    color: var(--negru);
+    font-weight: normal;
+}
+.sursa_imagine {
+    color: var(--rosu);
+    font-weight: bold;
+}
+.sursa_imagine span {
+    color: var(--negru);
+    font-weight: normal;
+    font-size: 8px;
+}
+.categorie {
+    grid-area: categorie;
+}
+.descriere {
+    grid-area: descriere;
+}
+article {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    'nume nume'
+    'imagine categorie'
+    'imagine descriere'
+    'pret descriere'
+    'producator descriere'
+    'caracteristici descriere'
+    'timp descriere'
+    'returnare descriere';
     grid-gap: 1rem;
 }
 .grid-produse .produs {
@@ -69,4 +131,8 @@ main {
 .selecteaza-cos:hover {
     background-color: var(--rosu);
     border: 1px solid  var(--albastru-inchis);
+}
+.timp time {
+    color: var(--negru);
+    font-weight: normal;
 }
