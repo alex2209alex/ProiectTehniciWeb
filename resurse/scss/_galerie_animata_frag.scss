@@ -1,6 +1,7 @@
 $nr-imagini: 7 !default;
 $inaltime-galerie: 200px;
 $timp-animatie: 3s;
+$timp: (100 / $nr-imagini) * 1%;
 * {
   margin: 0;
   padding: 0;
@@ -43,7 +44,7 @@ $timp-animatie: 3s;
 @for $i from 1 through $nr-imagini {
   #galerie-animata figure:nth-of-type(#{$i}) {
     animation-delay: ($nr-imagini - $i) * $timp-animatie;
-    z-index: 0;
+    z-index: $i;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -57,32 +58,33 @@ $timp-animatie: 3s;
     opacity: 1;
     transform: translateX(0);
   }
-  3% {
+  #{$timp / 3} {
     opacity: 1;
     transform: translateX(10%);
   }
-  6% {
+  #{$timp / 3 * 2} {
     z-index: 100;
     opacity: 0.5;
-    transform: translateX(0%);
+    transform: translateX(-10%);
   }
-  7% {
+  #{$timp} {
     z-index: 100;
     opacity: 0;
     transform: translateX(100%);
   }
-  20% {
+  #{$timp + 0.1%} {
     z-index: -10;
     transform: translateX(0);
   }
-  30% {
-    z-index: 0;
+  #{$timp + 0.2%} {
+    z-index: -1;
   }
-  80% {
+  #{100% - 2 * $timp} {
     opacity: 0;
+    z-index: -1;
   }
-  90% {
-    z-index: -10;
-    opacity: 1;
+  #{100% - $timp} {
+    z-index: -1;
+    opacity: 0.2;
   }
 }
