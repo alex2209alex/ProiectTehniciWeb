@@ -7,7 +7,16 @@ const ejs = require("ejs");
 const {Client} = require("pg");
 
 //const client = new Client({database: "Calculatoare Noi si Vechi", user: "alex", password: "alex", host: "localhost", port: 5433});
-const client = new Client({database: "ddgcm5k83pto4u", user: "bqvcfvzfurpggw", password: "55e02f988384cdbae8b5e1ed9d139a34080cd3fe64b2cb82a1505e67f80f670c", host: "ec2-44-199-143-43.compute-1.amazonaws.com", port: "5432", ssl: {rejectUnauthorized: false}});
+const client = new Client({
+    database: "ddgcm5k83pto4u",
+    user: "bqvcfvzfurpggw",
+    password: "55e02f988384cdbae8b5e1ed9d139a34080cd3fe64b2cb82a1505e67f80f670c",
+    host: "ec2-44-199-143-43.compute-1.amazonaws.com",
+    port: "5432",
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 client.connect();
 
 let categorii = [];
