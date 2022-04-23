@@ -103,6 +103,15 @@ app.get("/produse", function(req, res) {
             selectSql += `AND LOWER(producator) LIKE ${stringProducatori} `;
         }
     }
+    // Sortare
+    if(req.query.sort) {
+        if(req.query.sort === "cresc") {
+            selectSql += `ORDER BY nume, reducere / pret `;
+        }
+        else {
+            selectSql += `ORDER BY nume DESC, reducere / pret DESC`;
+        }
+    }
     client.query(selectSql, function(err, rezQuery) {
         if(rezQuery && rezQuery.rowCount) {
             res.render("pagini/produse", {tipuri:tipuri, producatori: producatori, produse: rezQuery.rows, categorii: categorii, query: req.query});

@@ -167,3 +167,21 @@ function onClickCalculareSumaPreturi() {
         raspuns.remove();
     }, 2000)
 }
+
+function onClickSortareCrescatoare() {
+    let url = window.location.href;
+    if(!url.includes("?")) {
+        url += "?1=1";
+    }
+    url += "&sort=cresc";
+    window.location.href = url;
+}
+
+function onClickSortareDescrescatoare() {
+    let url = window.location.href;
+    if(!url.includes("?")) {
+        url += "?1=1";
+    }
+    url += "&sort=desc";
+    window.location.href = url;
+}
