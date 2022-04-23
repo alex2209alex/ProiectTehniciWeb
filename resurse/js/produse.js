@@ -145,3 +145,25 @@ function onClickResetare() {
     }
     window.location.href = url;
 }
+
+function onClickCalculareSumaPreturi() {
+    const produse = document.getElementsByClassName("valuarepret");
+    let suma = 0;
+    for(const prod of produse) {
+        suma += parseFloat(prod.innerHTML);
+    }
+    const raspuns = document.createElement("div");
+    raspuns.innerHTML = suma;
+    raspuns.style.display = "block";
+    raspuns.style.position = "fixed";
+    raspuns.style.backgroundColor = "red";
+    raspuns.style.top = "200px";
+    raspuns.style.right = "50%";
+    raspuns.style.height = "100px";
+    raspuns.style.fontSize = "50px"
+    const main = document.getElementById("main");
+    main.appendChild(raspuns);
+    setTimeout(() => {
+        raspuns.remove();
+    }, 2000)
+}

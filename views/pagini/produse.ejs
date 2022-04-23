@@ -12,7 +12,7 @@
         <%-include("../fragmente/header");%>
         <%-include("../fragmente/printare.ejs");%>
         <%-include("../fragmente/nav.ejs");%>
-        <main>
+        <main id="main">
             <h2>Produse</h2>
             <section id="filtre">
                 <!--a-->
@@ -202,8 +202,9 @@
                 </div>
                 <p>
                     <button id="filtrare" onclick="onClickFiltrare()">Filtreaza</button>
-                    <button id="sortCrescNume">Sorteaza crescator dupa nume si pret</button>
-                    <button id="sortDescrescNume">Sorteaza descrescator dupa nume si pret</button>
+                    <button id="sortCrescNume">Sorteaza crescator dupa nume si procent reducere</button>
+                    <button id="sortDescrescNume">Sorteaza descrescator dupa nume si procent reducere</button>
+                    <button id="calculareSumaPreturi" onclick="onClickCalculareSumaPreturi()">Calculeaza suma preturilor produselor selectate</button>
                     <button id="resetare" onclick="onClickResetare()">Reseteaza</button>
 
                 </p>
@@ -280,7 +281,7 @@
                             }
                         %>
                         <ul>
-                            <li><p class="pret">Pret: <span><%-prod.pret%></span></p></li>
+                            <li><p class="pret">Pret: <span class="valuarepret"><%-prod.pret%></span></p></li>
                             <li><p class="producator">Producator: <span><%-prod.producator%></span></p></li>
                             <li><p class="caracteristici">Caracteristici: <span><%-prod.caracteristici%></span></p></li>
                             <li><p class="timp">Data adaugare: <time><%-zi_saptamana%> <%-zi_luna%> <%-luna%> <%-an%></time></p></li>
