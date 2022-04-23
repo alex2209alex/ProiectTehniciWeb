@@ -152,12 +152,14 @@ function onClickResetare() {
     window.location.href = url;
 }
 
-function onClickCalculareSumaPreturi() {
+function onClickCalculareMediaPreturi() {
     const produse = document.getElementsByClassName("valuarepret");
-    let suma = 0;
+    let suma = 0, nr = 0;
     for(const prod of produse) {
         suma += parseFloat(prod.innerHTML);
+        nr++;
     }
+    suma = suma / nr;
     const raspuns = document.createElement("div");
     raspuns.innerHTML = suma;
     raspuns.style.display = "block";
