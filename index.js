@@ -242,5 +242,6 @@ function randeazaEroare(res, identificator, titlu, text, imagine) {
     res.end();
 }
 
-app.listen(8080);
+const s_port = process.env.PORT || 8080;
+app.listen(s_port);
 console.log("A pornit!");
