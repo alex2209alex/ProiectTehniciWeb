@@ -6,6 +6,7 @@
         <meta name="description" content="Magazin Calculatoare si Periferice PC Online">
         <%-include("../fragmente/head.ejs");%>
         <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css"/>
+        <script src="/resurse/js/produse.js" defer></script>
     </head>
     <body>
         <%-include("../fragmente/header");%>
@@ -13,6 +14,143 @@
         <%-include("../fragmente/nav.ejs");%>
         <main>
             <h2>Produse</h2>
+            <section id="filtre">
+                <!--a-->
+                <div>
+                    <label for="input-cuvant-cheie">Cuvant cheie:</label>
+                    <input type="text" id="input-cuvant-cheie" value="<%-locals.query.cc%>">
+                </div>
+                <br>
+                <!--b-->
+                <!--Cod luat de pe https://www.youtube.com/watch?v=pTlsnFLiK6c-->
+                <div class="middle">
+                    <div id="label-range">
+                        <label>Pret:</label>
+                    </div>
+                    <div id="before-range"></div>
+                    <div id="range">
+                        <div class="multi-range-slider">
+                            <input type="range" id="input-left" min="0" max="10000" value="0">
+                            <input type="range" id="input-right" min="0" max="10000" value="10000">
+                        </div>
+                        <div class="slider">
+                            <div class="track"></div>
+                            <div class="range"></div>
+                            <div class="thumb left"></div>
+                            <div class="thumb right"></div>
+                        </div>
+                    </div>
+                    <div id="after-range"></div>
+                    <div id="valoare-selectata"></div>
+                </div>
+                <br>
+                <!--c-->
+                <div>
+                    <label for="input-tip">Tip produse:</label>
+                    <%
+                    if(locals.query.tp) {%>
+                        <input list="tipuri-produse" id="input-tip" value="<%-locals.query.tp%>"/>
+                    <%}
+                    else {%>
+                        <input list="tipuri-produse" id="input-tip" placeholder="orice"/>
+                    <%}%>
+                    <datalist id="tipuri-produse">
+                        <%
+                        let apProd={};
+                        for(prod of locals.produse) {
+                            if(!apProd[prod.tip_produs]) {%>
+                                <option value="<%-prod.tip_produs%>">
+                            <%  apProd[prod.tip_produs] = 1;
+                            }
+                        }%>
+                    </datalist>
+                </div>
+                <!--d-->
+                <div>
+                    <p>Returnare:</p>
+                    <div>
+                        <%if(!locals.query.ret) {%>
+                            <input type="radio" id="input-returnare-orice" name="input-returnare" checked>
+                        <%}
+                        else {%>
+                            <input type="radio" id="input-returnare-orice" name="input-returnare">
+                        <%}%>
+                        <label for="input-returnare-orice">Orice</label>
+                    </div>
+                    <div>
+                        <%if(locals.query.ret && locals.query.ret === "true") {%>
+                            <input type="radio" id="input-returnare-da" name="input-returnare" checked>
+                        <%}
+                        else {%>
+                            <input type="radio" id="input-returnare-da" name="input-returnare">
+                        <%}%>
+                        <label for="input-returnare-da">Da</label>
+                    </div>
+                    <div>
+                        <%if(locals.query.ret && locals.query.ret === "false") {%>
+                            <input type="radio" id="input-returnare-nu" name="input-returnare" checked>
+                        <%}
+                        else {%>
+                            <input type="radio" id="input-returnare-nu" name="input-returnare">
+                        <%}%>
+                        <label for="input-returnare-nu">Nu</label>
+                    </div>
+                </div>
+                <br>
+                <!--e-->
+                <div>
+                    <label for="input-noutati">Noutati:</label>
+                    <%if(locals.query.no && locals.query.no === "1") {%>
+                        <input type="checkbox" id="input-noutati" name="input-noutati" checked>
+                    <%}
+                    else {%>
+                        <input type="checkbox" id="input-noutati" name="input-noutati">
+                    <%}%>
+                </div>
+                <br>
+                <!--f-->
+                <div>
+                    <label for="input-nume">Nume:</label>
+                    <div>
+                        <textarea id="input-nume" name="input-nume" rows="1" cols="20" ><%-locals.query.nu%></textarea>
+                    </div>
+                </div>
+                <br>
+                <!--g-->
+                <div>
+                    <label for="input-reducere">Reducere:</label>
+                    <select id="input-reducere">
+                        <option value="orice">Orice</option>
+                        <option value="0-24.99">0-24.99</option>
+                        <option value="25-49.99">25-49.99</option>
+                        <option value="50-74.99">50-74.99</option>
+                        <option value="75-100">75-100</option>
+                    </select>
+                </div>
+                <br>
+                <!--h-->
+                <div>
+                    <div>
+                        <label for="input-producatori">Producatori:</label>
+                    </div>
+                    <select id="input-producatori" multiple>
+                        <%let apProducator={};
+                        for(prod of locals.produse) {
+                            if(!apProducator[prod.producator]) {%>
+                                <option value="<%-prod.producator%>" selected><%-prod.producator%></option>
+                            <%  apProducator[prod.producator] = 1;
+                            }
+                        }%>
+                    </select>
+                </div>
+                <p>
+                    <button id="filtrare" onclick="onClickFiltrare()">Filtreaza</button>
+                    <button id="sortCrescNume">Sorteaza crescator dupa nume si pret</button>
+                    <button id="sortDescrescNume">Sorteaza descrescator dupa nume si pret</button>
+                    <button id="resetare" onclick="onClickResetare()">Reseteaza</button>
+
+                </p>
+            </section>
             <div class="grid-produse">
                 <%for(let prod of locals.produse) {%>
                     <article class="produs <%-prod.categorie%>" id="artc-<%-prod.id%>">
@@ -79,13 +217,17 @@
                             else {
                                 luna = "Decembrie";
                             }
+                            let returnare = "Da";
+                            if(prod.returnare === false) {
+                                returnare = "Nu";
+                            }
                         %>
                         <ul>
                             <li><p class="pret">Pret: <span><%-prod.pret%></span></p></li>
                             <li><p class="producator">Producator: <span><%-prod.producator%></span></p></li>
                             <li><p class="caracteristici">Caracteristici: <span><%-prod.caracteristici%></span></p></li>
                             <li><p class="timp">Data adaugare: <time><%-zi_saptamana%> <%-zi_luna%> <%-luna%> <%-an%></time></p></li>
-                            <li><p class="returnare">Returnare: <span><%-prod.returnare%></span></p></li>
+                            <li><p class="returnare">Returnare: <span><%-returnare%></span></p></li>
                         </ul>
                         <p class="categorie">Categorie: <span><%-prod.categorie%></span></p>
                         <p class="descriere">Descriere: <span><%-prod.descriere%></span></p>

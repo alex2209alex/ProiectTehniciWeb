@@ -39,20 +39,70 @@ app.get("/despre", function(req,res) {
 });
 
 app.get("/produse", function(req, res) {
-    if(!req.query.tip) {
-        client.query("SELECT * FROM produse", function(err, rezQuery) {
-            res.render("pagini/produse", {produse: rezQuery.rows, categorii: categorii});
-        });
+    let selectSql = "SELECT * FROM produse WHERE 1=1 ";
+    if(req.query.categ) {
+        selectSql += `AND categorie = '${req.query.categ}' `;
     }
-    else if(categorii.includes(req.query.tip)) {
-        const cond_where = req.query.tip ? ` categorie = '${req.query.tip}'` : " 1 = 1";
-        client.query("SELECT * FROM produse WHERE" + cond_where, function(err, rezProd) {
-            res.render("pagini/produse", {produse: rezProd.rows, categorii: categorii});
-        });
+    // Cuvant cheie in descriere
+    if(req.query.cc) {
+        selectSql += `AND LOWER(descriere) LIKE '%${req.query.cc}%' `;
     }
+    // Pret produs
+    if(req.query.mi) {
+        selectSql += `AND pret >= ${req.query.mi} `;
+    }
+    if(req.query.ma) {
+        selectSql += `AND pret <= ${req.query.ma} `;
+    }
+    // Tip produs
+    if(req.query.tp) {
+        selectSql += `AND tip_produs = '${req.query.tp}' `;
+    }
+    // Returnare
+    if(req.query.ret) {
+        selectSql += `AND returnare = ${req.query.ret} `;
+    }
+    // Noutati
+    if(req.query.no) {
+        selectSql += `AND data_adaugare >= '19 apr 2022' `;
+    }
+    // Nume
+    if(req.query.nu) {
+        selectSql += `AND LOWER(nume) LIKE '${req.query.nu}%' `;
+    }
+    // Reducere
+    if(req.query.mired) {
+        selectSql += `AND reducere >= ${req.query.mired} `;
+    }
+    if(req.query.mared) {
+        selectSql += `AND reducere <= ${req.query.mared} `;
+    }
+    // Producatori
+    if(req.query.pro) {
+        if(typeof req.query.pro !== "string") {
+            let stringProducatori = `'${req.query.pro[0]}'`;
+            for(let i = 1; i < req.query.pro.length; ++i) {
+                stringProducatori += `, '${req.query.pro[i]}'`;
+            }
+            selectSql += `AND LOWER(producator) IN (${stringProducatori}) `;
+        }
+        else {
+            let stringProducatori = `'${req.query.pro}'`;
+            selectSql += `AND LOWER(producator) LIKE ${stringProducatori} `;
+        }
+    }
+    client.query(selectSql, function(err, rezQuery) {
+        if(rezQuery && rezQuery.rowCount) {
+            res.render("pagini/produse", {produse: rezQuery.rows, categorii: categorii, query: req.query});
+        }
+        else {
+            randeazaEroare(res,1, 'Nu sunt produse cu selectia cautata', 'Nu avem produse de tipul descris.','/resurse/imagini/erori/404.webp')
+        }
+    });
+    /*
     else {
         randeazaEroare(res, 404);
-    }
+    }*/
 });
 
 app.get("/produs/:id", function(req, res) {

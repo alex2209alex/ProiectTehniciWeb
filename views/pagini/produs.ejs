@@ -24,7 +24,13 @@
                         <p>Data adăugare: <span><%-locals.prod.data_adaugare%></span></p>
                         <p>Producator: <span class="producator"><%- locals.prod.producator %></span></p>
                         <p>Caracteristici: <span class="caracteristici"><%-locals.prod.caracteristici%></span></p>
-                        <p>Returnare: <span class="returnare"><%-locals.prod.returnare%></span></p>
+                        <%
+                            let returnare = "Da";
+                            if(locals.prod.returnare === false) {
+                                returnare = "Nu";
+                            }
+                        %>
+                        <p>Returnare: <span class="returnare"><%-returnare%></span></p>
                         <figure class="imag-produs">
                             <img src="/resurse/imagini/produse/<%-locals.prod.imagine%>" alt="[imagine <%-locals.prod.nume%>]" />
                             <figcaption>Sursa imagine: <span><%-locals.prod.sursa_imagine%></span></figcaption>
