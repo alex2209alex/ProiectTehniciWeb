@@ -128,6 +128,12 @@ function onClickFiltrare() {
             url += sir;
         }
     }
+    if(window.location.href.includes("sort=cresc")) {
+        url += "&sort=cresc"
+    }
+    else if(window.location.href.includes("sort=descr")) {
+        url += "&sort=descr";
+    }
     // Navigare cu filtre
     window.location.href = url;
 }
@@ -173,7 +179,12 @@ function onClickSortareCrescatoare() {
     if(!url.includes("?")) {
         url += "?1=1";
     }
-    url += "&sort=cresc";
+    if(!url.includes("&sort=descr") && !url.includes("&sort=cresc")) {
+        url += "&sort=cresc";
+    }
+    if(url.includes("&sort=descr")) {
+        url = url.replace("&sort=descr", "&sort=cresc");
+    }
     window.location.href = url;
 }
 
@@ -182,6 +193,12 @@ function onClickSortareDescrescatoare() {
     if(!url.includes("?")) {
         url += "?1=1";
     }
-    url += "&sort=desc";
+    if(!url.includes("&sort=descr") && !url.includes("&sort=cresc")) {
+        url += "&sort=descr";
+    }
+    if(url.includes("&sort=cresc")) {
+        console.log("aijdsfuihsiuj");
+        url = url.replace("&sort=cresc", "&sort=descr");
+    }
     window.location.href = url;
 }
