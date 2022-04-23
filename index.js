@@ -10,9 +10,21 @@ const client = new Client({database: "Calculatoare Noi si Vechi", user: "alex", 
 client.connect();
 
 let categorii = [];
-client.query("select * from unnest(enum_range(null::categ_produse))", function(err, rezCateg) {
+client.query("SELECT * FROM unnest(enum_range(null::categ_produse))", function(err, rezCateg) {
     for(const elem of rezCateg.rows) {
         categorii.push(elem.unnest);
+    }
+});
+let tipuri = [];
+client.query("SELECT * FROM unnest(enum_range(null::tipuri_produse))", function(err, rezTip) {
+    for(const elem of rezTip.rows) {
+        tipuri.push(elem.unnest);
+    }
+});
+let producatori = [];
+client.query("SELECT DISTINCT producator from produse", function(err, rezProd) {
+    for(const elem of rezProd.rows) {
+        producatori.push(elem.producator);
     }
 });
 
@@ -93,16 +105,12 @@ app.get("/produse", function(req, res) {
     }
     client.query(selectSql, function(err, rezQuery) {
         if(rezQuery && rezQuery.rowCount) {
-            res.render("pagini/produse", {produse: rezQuery.rows, categorii: categorii, query: req.query});
+            res.render("pagini/produse", {tipuri:tipuri, producatori: producatori, produse: rezQuery.rows, categorii: categorii, query: req.query});
         }
         else {
             randeazaEroare(res,1, 'Nu sunt produse cu selectia cautata', 'Nu avem produse de tipul descris.','/resurse/imagini/erori/404.webp')
         }
     });
-    /*
-    else {
-        randeazaEroare(res, 404);
-    }*/
 });
 
 app.get("/produs/:id", function(req, res) {

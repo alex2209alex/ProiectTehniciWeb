@@ -70,12 +70,18 @@ article {
     'returnare descriere';
     grid-gap: 1rem;
 }
+.grid-produse {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+}
 .grid-produse .produs {
     border-radius: 2rem;
     box-shadow: 0 0 0.8rem 0.3rem var(--negru);
     overflow: hidden;
 }
 .grid-produse .produs h3 {
+    height: 20px;
     background-color: var(--albastru-inchis);
     color: var(--alb);
     text-align: center;

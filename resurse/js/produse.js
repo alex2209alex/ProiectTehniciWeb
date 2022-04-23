@@ -87,10 +87,12 @@ function onClickFiltrare() {
     else if(window.location.href.includes("categ=home")) {
         url += "&categ=home";
     }
-    if(cuvantCheie) {
-        cuvantCheie = cuvantCheie.toLowerCase();
-        url += `&cc=${cuvantCheie}`;
+    if(!cuvantCheie || cuvantCheie.length < 3 || cuvantCheie.includes(" ")) {
+        alert("Cuvantul cheie nu este valid. Acesta trebuie sa aive minim 3 caractere si nu trebuie sa contina spatiu.");
+        return;
     }
+    cuvantCheie = cuvantCheie.toLowerCase();
+    url += `&cc=${cuvantCheie}`;
     if(tipProdus) {
         url += `&tp=${tipProdus}`;
     }
@@ -103,28 +105,25 @@ function onClickFiltrare() {
     if(noutati.checked) {
         url += "&no=1";
     }
-    if(nume) {
-        nume = nume.toLowerCase();
-        url += `&nu=${nume}`;
+    if(!nume) {
+        alert("Numele nu poate fi vid");
+        return;
     }
+    nume = nume.toLowerCase();
+    url += `&nu=${nume}`;
     if(reducere !== "orice") {
         [minReducere, maxreducere] = reducere.split("-");
         url += `&mired=${minReducere}&mared=${maxreducere}`;
     }
-    let _this = inputLeft,
-        min = parseFloat(_this.min),
-        max = parseFloat(_this.max);
+    let _this = inputLeft;
     _this.value = Math.min(parseFloat(_this.value), parseFloat(inputRight.value) - 1);
 
-    let _this2 = inputRight,
-        min2 = parseFloat(_this2.min),
-        max2 = parseFloat(_this2.max);
+    let _this2 = inputRight;
     _this2.value = Math.max(parseFloat(_this2.value), parseFloat(inputLeft.value) + 1);
     url += `&mi=${_this.value}&ma=${_this2.value}`;
-    for(let i = 0; i < producatoriSelect.options.length; ++i) {
-        let opt = producatoriSelect.options[i];
-        if(opt.selected) {
-            let sir = `&pro=${opt.value}`;
+    for(const prod of producatoriSelect.options) {
+        if(prod.selected) {
+            let sir = `&pro=${prod.value}`;
             sir = sir.toLowerCase();
             url += sir;
         }

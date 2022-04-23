@@ -30,8 +30,18 @@
                     <div id="before-range"></div>
                     <div id="range">
                         <div class="multi-range-slider">
+                            <%if(locals.query.mi) {%>
+                                <input type="range" id="input-left" min="0" max="10000" value="<%-parseInt(locals.query.mi)%>">
+                            <%}
+                            else {%>
                             <input type="range" id="input-left" min="0" max="10000" value="0">
-                            <input type="range" id="input-right" min="0" max="10000" value="10000">
+                            <%}%>
+                            <%if(locals.query.ma) {%>
+                            <input type="range" id="input-right" min="0" max="10000" value="<%-parseInt(locals.query.ma)%>">
+                            <%}
+                            else {%>
+                                <input type="range" id="input-right" min="0" max="10000" value="10000">
+                            <%}%>
                         </div>
                         <div class="slider">
                             <div class="track"></div>
@@ -57,10 +67,10 @@
                     <datalist id="tipuri-produse">
                         <%
                         let apProd={};
-                        for(prod of locals.produse) {
-                            if(!apProd[prod.tip_produs]) {%>
-                                <option value="<%-prod.tip_produs%>">
-                            <%  apProd[prod.tip_produs] = 1;
+                        for(prod of locals.tipuri) {
+                            if(!apProd[prod]) {%>
+                                <option value="<%-prod%>">
+                            <%  apProd[prod] = 1;
                             }
                         }%>
                     </datalist>
@@ -121,10 +131,30 @@
                     <label for="input-reducere">Reducere:</label>
                     <select id="input-reducere">
                         <option value="orice">Orice</option>
-                        <option value="0-24.99">0-24.99</option>
-                        <option value="25-49.99">25-49.99</option>
-                        <option value="50-74.99">50-74.99</option>
-                        <option value="75-100">75-100</option>
+                        <%if(locals.query.mired === "0" && locals.query.mared === "24.99") {%>
+                            <option value="0-24.99" selected>0-24.99</option>
+                        <%}
+                        else {%>
+                            <option value="0-24.99">0-24.99</option>
+                        <%}%>
+                        <%if(locals.query.mired === "25" && locals.query.mared === "49.99") {%>
+                            <option value="25-49.99" selected>25-49.99</option>
+                        <%}
+                        else {%>
+                            <option value="25-49.99">25-49.99</option>
+                        <%}%>
+                        <%if(locals.query.mired === "50" && locals.query.mared === "74.99") {%>
+                            <option value="50-74.99" selected>50-74.99</option>
+                        <%}
+                        else {%>
+                            <option value="50-74.99">50-74.99</option>
+                        <%}%>
+                        <%if(locals.query.mired === "75" && locals.query.mared === "100") {%>
+                            <option value="75-100" selected>75-100</option>
+                        <%}
+                        else {%>
+                            <option value="75-100">75-100</option>
+                        <%}%>
                     </select>
                 </div>
                 <br>
@@ -135,10 +165,37 @@
                     </div>
                     <select id="input-producatori" multiple>
                         <%let apProducator={};
-                        for(prod of locals.produse) {
-                            if(!apProducator[prod.producator]) {%>
-                                <option value="<%-prod.producator%>" selected><%-prod.producator%></option>
-                            <%  apProducator[prod.producator] = 1;
+                        let producator = locals.query.pro;
+                        if(typeof producator === "string") {
+                            for(prod of locals.producatori) {
+                                if(!apProducator[prod]) {
+                                    if(prod.toLowerCase() === producator) {%>
+                                        <option value="<%-prod%>" selected><%-prod%></option>
+                                    <%}
+                                    else {%>
+                                        <option value="<%-prod%>"><%-prod%></option>
+                                    <%}
+                                    apProducator[prod] = 1;
+                                }
+                            }
+                        }
+                        else if(producator === undefined) {
+                            for(prod of locals.producatori) {
+                                if(!apProducator[prod]) {%>
+                                    <option value="<%-prod%>" selected><%-prod%></option>
+                                <%}
+                                apProducator[prod] = 1;
+                            }
+                        }
+                        else {
+                            for(prod of locals.producatori) {
+                                if(!apProducator[prod] && producator.includes(prod.toLowerCase())) {%>
+                                    <option value="<%-prod%>" selected><%-prod%></option>
+                                <%}
+                                else if(!apProducator[prod]) {%>
+                                    <option value="<%-prod%>"><%-prod%></option>
+                                <%}
+                                apProducator[prod] = 1;
                             }
                         }%>
                     </select>
