@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#galerie-animata {
+  margin: 3rem;
+  width: 400px;
+  height: 200px;
+  border: 5px solid transparent;
+  border-image: url("/resurse/imagini/erori/404.webp") 10 round;
+  position: relative;
+  overflow: hidden;
+}
+#galerie-animata figure {
+  background: var(--albastru-inchis);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+  height: 200px;
+  animation-name: galerie_animata;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-duration: 24s;
+}
+#galerie-animata figure img {
+  width: 400px;
+}
+#galerie-animata figure figcaption {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: var(--alb);
+}
+
+#galerie-animata:hover figure {
+  animation-play-state: paused;
+}
+
+#galerie-animata figure:nth-of-type(1) {
+  animation-delay: 21s;
+  z-index: 1;
+}
+
+#galerie-animata figure:nth-of-type(2) {
+  animation-delay: 18s;
+  z-index: 2;
+}
+
+#galerie-animata figure:nth-of-type(3) {
+  animation-delay: 15s;
+  z-index: 3;
+}
+
+#galerie-animata figure:nth-of-type(4) {
+  animation-delay: 12s;
+  z-index: 4;
+}
+
+#galerie-animata figure:nth-of-type(5) {
+  animation-delay: 9s;
+  z-index: 5;
+}
+
+#galerie-animata figure:nth-of-type(6) {
+  animation-delay: 6s;
+  z-index: 6;
+}
+
+#galerie-animata figure:nth-of-type(7) {
+  animation-delay: 3s;
+  z-index: 7;
+}
+
+#galerie-animata figure:nth-of-type(8) {
+  animation-delay: 0s;
+  z-index: 8;
+}
+
+@media screen and (max-width: 1000px) {
+  #galerie-animata {
+    display: none;
+  }
+}
+@keyframes galerie_animata {
+  0% {
+    z-index: 100;
+    opacity: 1;
+    transform: translateX(0);
+  }
+  4.1666666667% {
+    opacity: 1;
+    transform: translateX(10%);
+  }
+  8.3333333333% {
+    z-index: 100;
+    opacity: 0.5;
+    transform: translateX(-10%);
+  }
+  12.5% {
+    z-index: 100;
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  12.6% {
+    z-index: -10;
+    transform: translateX(0);
+  }
+  12.7% {
+    z-index: -1;
+  }
+  75% {
+    opacity: 0;
+    z-index: -1;
+  }
+  87.5% {
+    z-index: -1;
+    opacity: 0.2;
+  }
+}
