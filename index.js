@@ -49,6 +49,7 @@ const app = express();
 app.set("view engine", "ejs");
 
 app.use("/resurse", express.static(__dirname + "/resurse"));
+console.log(__dirname);
 
 app.get(["/", "/index", "/home"], function(req, res) {
     res.render("pagini/index", {ip: req.ip, imagini: obImagini.imagini, categorii: categorii});
