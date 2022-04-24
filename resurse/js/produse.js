@@ -139,7 +139,7 @@ function onClickFiltrare() {
 }
 
 function onClickResetare() {
-    let url = "http://localhost:8080/produse?1=1";
+    let url = "https://mighty-river-89578.herokuapp.com/produse?1=1";
     if(window.location.href.includes("categ=gaming")) {
         url += "&categ=gaming";
     }
