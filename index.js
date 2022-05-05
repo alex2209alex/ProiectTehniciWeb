@@ -6,8 +6,8 @@ const path = require("path");
 const ejs = require("ejs");
 const {Client} = require("pg");
 
-//const client = new Client({database: "Calculatoare Noi si Vechi", user: "alex", password: "alex", host: "localhost", port: 5433});
-const client = new Client({
+const client = new Client({database: "Calculatoare Noi si Vechi", user: "alex", password: "alex", host: "localhost", port: 5433});
+/*const client = new Client({
     database: "ddgcm5k83pto4u",
     user: "bqvcfvzfurpggw",
     password: "55e02f988384cdbae8b5e1ed9d139a34080cd3fe64b2cb82a1505e67f80f670c",
@@ -16,25 +16,14 @@ const client = new Client({
     ssl: {
         rejectUnauthorized: false
     }
-});
+});*/
 client.connect();
 
-let categorii = [];
+const obiectGlobal = {obImagini: null, obErori: null, categorii: []};
+
 client.query("SELECT * FROM unnest(enum_range(null::categ_produse))", function(err, rezCateg) {
     for(const elem of rezCateg.rows) {
-        categorii.push(elem.unnest);
-    }
-});
-let tipuri = [];
-client.query("SELECT * FROM unnest(enum_range(null::tipuri_produse))", function(err, rezTip) {
-    for(const elem of rezTip.rows) {
-        tipuri.push(elem.unnest);
-    }
-});
-let producatori = [];
-client.query("SELECT DISTINCT producator from produse", function(err, rezProd) {
-    for(const elem of rezProd.rows) {
-        producatori.push(elem.producator);
+        obiectGlobal.categorii.push(elem.unnest);
     }
 });
 
@@ -43,7 +32,6 @@ let random_6_12_even = random_6_13;
 if(random_6_13 % 2 === 1) {
     random_6_12_even -= 1;
 }
-let obErori, obImagini;
 
 const app = express();
 app.set("view engine", "ejs");
@@ -51,12 +39,12 @@ app.set("view engine", "ejs");
 app.use("/resurse", express.static(__dirname + "/resurse"));
 
 app.get(["/", "/index", "/home"], function(req, res) {
-    res.render("pagini/index", {ip: req.ip, imagini: obImagini.imagini, categorii: categorii});
+    res.render("pagini/index", {ip: req.ip, imagini: obiectGlobal.obImagini.imagini, categorii: obiectGlobal.categorii});
     res.end();
 });
 
 app.get("/despre", function(req,res) {
-    res.render("pagini/despre", {categorii: categorii});
+    res.render("pagini/despre", {categorii: obiectGlobal.categorii});
     res.end();
 });
 
@@ -122,9 +110,21 @@ app.get("/produse", function(req, res) {
             selectSql += `ORDER BY nume DESC, reducere / pret DESC`;
         }
     }
+    let tipuri = [];
+    client.query("SELECT * FROM unnest(enum_range(null::tipuri_produse))", function(err, rezTip) {
+        for(const elem of rezTip.rows) {
+            tipuri.push(elem.unnest);
+        }
+    });
+    let producatori = [];
+    client.query("SELECT DISTINCT producator from produse", function(err, rezProd) {
+        for(const elem of rezProd.rows) {
+            producatori.push(elem.producator);
+        }
+    });
     client.query(selectSql, function(err, rezQuery) {
         if(rezQuery && rezQuery.rowCount) {
-            res.render("pagini/produse", {tipuri:tipuri, producatori: producatori, produse: rezQuery.rows, categorii: categorii, query: req.query});
+            res.render("pagini/produse", {tipuri:tipuri, producatori: producatori, produse: rezQuery.rows, categorii: obiectGlobal.categorii, query: req.query});
         }
         else {
             randeazaEroare(res,1, 'Nu sunt produse cu selectia cautata', 'Nu avem produse de tipul descris.','/resurse/imagini/erori/404.webp')
@@ -135,7 +135,7 @@ app.get("/produse", function(req, res) {
 app.get("/produs/:id", function(req, res) {
     client.query(`SELECT * FROM produse WHERE id = ${req.params.id}`, function(err, rezQuery) {
         if(rezQuery.rows.length === 1) {
-            res.render("pagini/produs", {prod: rezQuery.rows[0], categorii: categorii});
+            res.render("pagini/produs", {prod: rezQuery.rows[0], categorii: obiectGlobal.categorii});
         }
         else {
             randeazaEroare(res,404);
@@ -145,7 +145,7 @@ app.get("/produs/:id", function(req, res) {
 
 app.get("*/galerie_animata.css", function(req, res) {
     const sirScss = fs.readFileSync(__dirname + "/resurse/scss/galerie_animata.scss").toString("utf8");
-    const rezScss = ejs.render(sirScss,{nrImagini: random_6_12_even, categorii: categorii});
+    const rezScss = ejs.render(sirScss,{nrImagini: random_6_12_even, categorii: obiectGlobal.categorii});
     const caleScss = __dirname + "/temp/galerie_animata.scss";
     fs.writeFileSync(caleScss,rezScss);
     let rezCompilare;
@@ -172,12 +172,12 @@ app.get("*/galerie_animata.css.map",function(req, res){
 });
 
 app.get("/galerie_animata", function(req, res) {
-    res.render("pagini/galerie_animata", {imagini: obImagini.imagini, numarImagini: random_6_12_even, categorii: categorii}) ;
+    res.render("pagini/galerie_animata", {imagini: obiectGlobal.obImagini.imagini, numarImagini: random_6_12_even, categorii: obiectGlobal.categorii}) ;
     res.end();
 });
 
 app.get("/galerie_statica", function(req, res) {
-    res.render("pagini/galerie_statica", {imagini: obImagini.imagini, categorii: categorii});
+    res.render("pagini/galerie_statica", {imagini: obiectGlobal.obImagini.imagini, categorii: obiectGlobal.categorii});
     res.end();
 });
 
@@ -216,17 +216,17 @@ app.get("/*", function(req, res) {
 
 function creeazaImagini() {
     const buf = fs.readFileSync(__dirname+"/resurse/json/galerie.json").toString("utf8");
-    obImagini = JSON.parse(buf);
-    for(let imag of obImagini.imagini) {
+    obiectGlobal.obImagini = JSON.parse(buf);
+    for(let imag of obiectGlobal.obImagini.imagini) {
         let nume_imag;
         [nume_imag, ] = imag.cale_fisier.split(".");
         let dim_mic = 150;
-        imag.mic = `${obImagini.cale_galerie}/mic/${nume_imag}-${dim_mic}.webp`;
-        imag.mare = `${obImagini.cale_galerie}/${imag.cale_fisier}`;
+        imag.mic = `${obiectGlobal.obImagini.cale_galerie}/mic/${nume_imag}-${dim_mic}.webp`;
+        imag.mare = `${obiectGlobal.obImagini.cale_galerie}/${imag.cale_fisier}`;
         if (!fs.existsSync(imag.mic))
             sharp(__dirname+"/" + imag.mare).resize(dim_mic).toFile(__dirname + "/" + imag.mic);
         let dim_mediu = 300;
-        imag.mediu = `${obImagini.cale_galerie}/mediu/${nume_imag}-${dim_mediu}.png`;
+        imag.mediu = `${obiectGlobal.obImagini.cale_galerie}/mediu/${nume_imag}-${dim_mediu}.png`;
         if (!fs.existsSync(imag.mediu))
             sharp(__dirname + "/" + imag.mare).resize(dim_mediu).toFile(__dirname + "/" + imag.mediu);
     }
@@ -235,20 +235,20 @@ creeazaImagini();
 
 function creeazaErori() {
     const buf = fs.readFileSync(__dirname + "/resurse/json/erori.json").toString("utf8");
-    obErori = JSON.parse(buf);
+    obiectGlobal.obErori = JSON.parse(buf);
 }
 creeazaErori();
 
 function randeazaEroare(res, identificator, titlu, text, imagine) {
-    const eroare = obErori.erori.find(function(elem) {
+    const eroare = obiectGlobal.obErori.erori.find(function(elem) {
         return elem.identificator === identificator;
     });
     titlu = titlu || (eroare && eroare.titlu) || "Titlu eroare custum";
     text = text || (eroare && eroare.text) || "Text eroare custum";
-    imagine = imagine || (eroare && (obErori.cale_baza + "/" + eroare.imagine)) || "Imagine eroare custum";
+    imagine = imagine || (eroare && (obiectGlobal.obErori.cale_baza + "/" + eroare.imagine)) || "Imagine eroare custum";
     if(eroare && eroare.status)
         res.status(eroare.identificator);
-    res.render("pagini/eroare_generala", {titlu: titlu, text: text, imagine: imagine, categorii: categorii});
+    res.render("pagini/eroare_generala", {titlu: titlu, text: text, imagine: imagine, categorii: obiectGlobal.categorii});
     res.end();
 }
 

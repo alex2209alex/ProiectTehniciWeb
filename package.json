@@ -6,8 +6,8 @@
   "directories": {
     "doc": "docs"
   },
-  "engines":{
-    "node":"16.x"
+  "engines": {
+    "node": "16.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -37,7 +37,7 @@
     "ejs": "^3.0.2",
     "express": "^4.17.3",
     "fs": "^0.0.1-security",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.16",
     "pg": "^8.7.3",
     "sass": "^1.50.0",
     "sharp": "^0.30.3"
