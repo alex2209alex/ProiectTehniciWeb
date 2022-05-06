@@ -12,3 +12,14 @@ body {
     margin: 0;
     padding: 0;
 }
+body.dark {
+    --albastru-deschis: #3A3B3C; /*principala*/
+    --negru: #FFFFFF;
+    --alb: #FFFFFF;
+    --rosu: #FFC0CB;
+    --albastru-inchis: #000000;
+    background: var(--albastru-deschis);
+    color: var(--negru);
+    margin: 0;
+    padding: 0;
+}

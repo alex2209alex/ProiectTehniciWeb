@@ -1,3 +1,10 @@
+<script defer>
+    const tema = localStorage.getItem("tema");
+    if(tema)
+        document.body.classList.add("dark");
+    else
+        document.body.classList.remove("dark");
+</script>
 <nav>
     <label id="hamburger" for="checkbox-meniu">
         <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="menu">
@@ -39,3 +46,15 @@
         </li>
     </ul>
 </nav>
+<p class="btn-tema"><button id="btn-tema"><i class="fa fa-sun-o" aria-hidden="true"></i><i class="fa fa-moon-o" aria-hidden="true"></i></button></p>
+<script src="/resurse/js/tema.js" defer></script>
+<script defer>
+    if(tema) {
+        const sun = document.getElementsByClassName("fa-sun-o");
+        sun[0].style.display = "none";
+    }
+    else {
+        const moon = document.getElementsByClassName("fa-moon-o");
+        moon[0].style.display = "none";
+    }
+</script>

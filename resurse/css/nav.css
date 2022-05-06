@@ -1,6 +1,14 @@
 body {
     --inaltime-meniu: 3rem;
 }
+.btn-tema {
+    text-align: right;
+    padding: 10px;
+}
+.btn-tema button {
+    width: 10%;
+    font-size: 15px;
+}
 nav {
     height: var(--inaltime-meniu);
     width: 100%;
