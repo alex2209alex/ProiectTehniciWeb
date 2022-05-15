@@ -2,6 +2,9 @@
     display:none;
 }
 @media print {
+    button {
+        display: none;
+    }
     .grid-pagina {
         display: block;
     }
