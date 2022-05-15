@@ -34,8 +34,11 @@
   },
   "homepage": "https://github.com/alex2209alex/ProiectTehniciWeb#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
     "ejs": "^3.0.2",
     "express": "^4.17.3",
+    "express-session": "^1.17.3",
+    "formidable": "^2.0.1",
     "fs": "^0.0.1-security",
     "nodemon": "^2.0.16",
     "pg": "^8.7.3",
