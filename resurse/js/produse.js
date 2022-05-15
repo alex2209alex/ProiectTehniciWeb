@@ -77,7 +77,8 @@ function onClickFiltrare() {
     const reducere = document.getElementById("input-reducere").options[document.getElementById("input-reducere").selectedIndex].value;
     const producatoriSelect = document.getElementById("input-producatori");
     let minReducere, maxreducere;
-    let url = "https://mighty-river-89578.herokuapp.com/produse?1=1";
+    let [url,] = window.location.href.split("?");
+    url += `?1=1`;
     if(window.location.href.includes("categ=gaming")) {
         url += "&categ=gaming";
     }
@@ -87,12 +88,22 @@ function onClickFiltrare() {
     else if(window.location.href.includes("categ=home")) {
         url += "&categ=home";
     }
-    if(!cuvantCheie || cuvantCheie.length < 3 || cuvantCheie.includes(" ")) {
+    if(nume && nume.length < 3) {
+        alert("Numele trebuie sa aiva minim 3 caractere");
+        return;
+    }
+    else if(nume) {
+        nume = nume.toLowerCase();
+        url += `&nu=${nume}`;
+    }
+    if(cuvantCheie && !cuvantCheie.includes(" ") && cuvantCheie.length >= 3) {
+        cuvantCheie = cuvantCheie.toLowerCase();
+        url += `&cc=${cuvantCheie}`;
+    }
+    else if(cuvantCheie) {
         alert("Cuvantul cheie nu este valid. Acesta trebuie sa aive minim 3 caractere si nu trebuie sa contina spatiu.");
         return;
     }
-    cuvantCheie = cuvantCheie.toLowerCase();
-    url += `&cc=${cuvantCheie}`;
     if(tipProdus) {
         url += `&tp=${tipProdus}`;
     }
@@ -105,12 +116,6 @@ function onClickFiltrare() {
     if(noutati.checked) {
         url += "&no=1";
     }
-    if(!nume) {
-        alert("Numele nu poate fi vid");
-        return;
-    }
-    nume = nume.toLowerCase();
-    url += `&nu=${nume}`;
     if(reducere !== "orice") {
         [minReducere, maxreducere] = reducere.split("-");
         url += `&mired=${minReducere}&mared=${maxreducere}`;
@@ -161,12 +166,12 @@ function onClickCalculareMediaPreturi() {
     }
     suma = suma / nr;
     const raspuns = document.createElement("div");
-    raspuns.innerHTML = suma;
+    raspuns.innerHTML = `Media produselor selectate este: ${suma}`;
     raspuns.style.display = "block";
     raspuns.style.position = "fixed";
-    raspuns.style.backgroundColor = "red";
+    raspuns.style.backgroundColor = "blue";
     raspuns.style.top = "200px";
-    raspuns.style.right = "50%";
+    raspuns.style.alignContent = "center";
     raspuns.style.height = "100px";
     raspuns.style.fontSize = "50px"
     const main = document.getElementById("main");

@@ -28,6 +28,7 @@ h3 {
 }
 #art-produs p:nth-of-type(odd) {
     background-color: var(--alb);
+    color: var(--albastru-inchis);
 }
 #art-produs figcaption {
     color: var(--alb);

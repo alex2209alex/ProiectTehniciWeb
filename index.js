@@ -19,13 +19,22 @@ const client = new Client({database: "Calculatoare Noi si Vechi", user: "alex", 
 });*/
 client.connect();
 
-const obiectGlobal = {obImagini: null, obErori: null, categorii: []};
+const obiectGlobal = {obImagini: null, obErori: null, categorii: [], pretMinim: null, pretMaxim: null};
 
 client.query("SELECT * FROM unnest(enum_range(null::categ_produse))", function(err, rezCateg) {
     for(const elem of rezCateg.rows) {
         obiectGlobal.categorii.push(elem.unnest);
     }
 });
+
+client.query("SELECT MIN(pret) FROM produse", function(err, rezPretMinim) {
+    obiectGlobal.pretMinim = rezPretMinim.rows[0].min;
+});
+
+client.query("SELECT MAX(pret) FROM produse", function(err, rezPretMaxim) {
+    obiectGlobal.pretMaxim = rezPretMaxim.rows[0].max;
+});
+
 
 let random_6_13 = 6 + Math.floor(Math.random() * 8);
 let random_6_12_even = random_6_13;
@@ -124,7 +133,7 @@ app.get("/produse", function(req, res) {
     });
     client.query(selectSql, function(err, rezQuery) {
         if(rezQuery && rezQuery.rowCount) {
-            res.render("pagini/produse", {tipuri:tipuri, producatori: producatori, produse: rezQuery.rows, categorii: obiectGlobal.categorii, query: req.query});
+            res.render("pagini/produse", {tipuri:tipuri, producatori: producatori, produse: rezQuery.rows, categorii: obiectGlobal.categorii, query: req.query, pretMinim: obiectGlobal.pretMinim, pretMaxim: obiectGlobal.pretMaxim});
         }
         else {
             randeazaEroare(res,1, 'Nu sunt produse cu selectia cautata', 'Nu avem produse de tipul descris.','/resurse/imagini/erori/404.webp')

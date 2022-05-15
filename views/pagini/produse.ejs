@@ -15,6 +15,14 @@
         <main id="main">
             <h2>Produse</h2>
             <section id="filtre">
+                <!--f-->
+                <div>
+                    <label for="input-nume">Nume:</label>
+                    <div>
+                        <textarea id="input-nume" name="input-nume" rows="1" cols="20" ><%-locals.query.nu%></textarea>
+                    </div>
+                </div>
+                <br>
                 <!--a-->
                 <div>
                     <label for="input-cuvant-cheie">Cuvant cheie:</label>
@@ -31,16 +39,16 @@
                     <div id="range">
                         <div class="multi-range-slider">
                             <%if(locals.query.mi) {%>
-                                <input type="range" id="input-left" min="0" max="10000" value="<%-parseInt(locals.query.mi)%>">
+                                <input type="range" id="input-left" min="<%-locals.pretMinim%>" max="<%-locals.pretMaxim%>" value="<%-parseInt(locals.query.mi)%>">
                             <%}
                             else {%>
-                            <input type="range" id="input-left" min="0" max="10000" value="0">
+                                <input type="range" id="input-left" min="<%-locals.pretMinim%>" max="<%-locals.pretMaxim%>" value="0">
                             <%}%>
                             <%if(locals.query.ma) {%>
-                            <input type="range" id="input-right" min="0" max="10000" value="<%-parseInt(locals.query.ma)%>">
+                                <input type="range" id="input-right" min="<%-locals.pretMinim%>" max="<%-locals.pretMaxim%>" value="<%-parseInt(locals.query.ma)%>">
                             <%}
                             else {%>
-                                <input type="range" id="input-right" min="0" max="10000" value="10000">
+                                <input type="range" id="input-right" min="<%-locals.pretMinim%>" max="<%-locals.pretMaxim%>" value="10000">
                             <%}%>
                         </div>
                         <div class="slider">
@@ -116,14 +124,6 @@
                     else {%>
                         <input type="checkbox" id="input-noutati" name="input-noutati">
                     <%}%>
-                </div>
-                <br>
-                <!--f-->
-                <div>
-                    <label for="input-nume">Nume:</label>
-                    <div>
-                        <textarea id="input-nume" name="input-nume" rows="1" cols="20" ><%-locals.query.nu%></textarea>
-                    </div>
                 </div>
                 <br>
                 <!--g-->
