@@ -3,3 +3,18 @@
     <link rel="stylesheet" href="/resurse/css/header-500.css" media="screen and (max-width:500px)">
     <h1>Magazinul Online "Calculatoare Noi si Vechi"</h1>
 </header>
+<%if(!locals.utilizator) {%>
+    <form id="form-inreg-header" method="post" class="date" action="/login" enctype="multipart/form-data" style="display: flex; justify-content: right;">
+        <p style="margin: 5px">
+            <label>
+                Username: <input type="text" name="username" required id="inp-username-header" pattern="[A-Za-z0-9]+">
+            </label>
+        </p>
+        <p style="margin: 5px">
+            <label>
+                Parola: <input type="password" name="parola" required id="parl-header">
+            </label>
+        </p>
+        <p style="margin: 5px"><input type="submit" value="Logare"></p>
+    </form>
+<%}%>

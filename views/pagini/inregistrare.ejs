@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <title>Calculatoare Noi si Vechi - inregistrare</title>
+        <meta name="keywords" content="calculatoare, noi, vechi, magazin, inregistrare, utilizator">
+        <meta name="description" content="Calculatoare Noi si Vechi - inregistrare utilizator">
+        <%-include("../fragmente/head.ejs");%>
+        <script type="text/javascript" src="/resurse/js/inregistrare.js"></script>
+    </head>
+    <body>
+        <%-include("../fragmente/header.ejs");%>
+        <%-include("../fragmente/printare.ejs");%>
+        <main>
+            <div class="afisaj">
+                <h2>Inregistrare utilizator</h2>
+                <%if(!locals.raspuns) {%>
+                    <%-include("../fragmente/formular.ejs", {action: "/inreg"}) %>
+                <%}%>
+	            <%if(locals.raspuns) {%>
+	                <%-locals.raspuns+"<br/>"%>
+	            <%}%>
+	            <%if(locals.err) {%>
+	                <%-locals.err%>
+	            <%}%>
+            </div>
+        </main>
+        <%-include("../fragmente/footer.ejs");%>
+    </body>
+</html>

@@ -40,6 +40,7 @@
     "express-session": "^1.17.3",
     "formidable": "^2.0.1",
     "fs": "^0.0.1-security",
+    "nodemailer": "^6.7.5",
     "nodemon": "^2.0.16",
     "pg": "^8.7.3",
     "sass": "^1.50.0",

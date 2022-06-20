@@ -34,16 +34,21 @@
                 <li>In lucru<i class="fa fa-cog fa-spin"></i></li>
             </ul>
         </li>
-        <li><div><a href="cont.html">Cont</a></div>
-            <ul>
-                <li>In lucru<i class="fa fa-cog fa-spin"></i></li>
-            </ul>
-        </li>
+        <li><div><a href="/inregistrare">Inregistrare</a></div></li>
         <li><div><a href="comenzi.html"><i class="fa fa-shopping-cart"></i></a></div>
             <ul>
                 <li>In lucru<i class="fa fa-cog fa-spin"></i></li>
             </ul>
         </li>
+        <%if(locals.utilizator) {%>
+            <li>
+                <div><%-locals.utilizator.username%></div>
+                <ul>
+                    <li><a href="/profil">Profil</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </li>
+        <%}%>
     </ul>
 </nav>
 <p class="btn-tema"><button id="btn-tema"><i class="fa fa-sun-o" aria-hidden="true"></i><i class="fa fa-moon-o" aria-hidden="true"></i></button></p>

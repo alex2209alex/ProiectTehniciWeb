@@ -5,6 +5,9 @@ const sass = require("sass");
 const path = require("path");
 const ejs = require("ejs");
 const {Client} = require("pg");
+const formidable = require('formidable');
+const crypto = require('crypto');
+const session = require('express-session');
 
 const client = new Client({database: "Calculatoare Noi si Vechi", user: "alex", password: "alex", host: "localhost", port: 5433});
 /*const client = new Client({
@@ -26,11 +29,9 @@ client.query("SELECT * FROM unnest(enum_range(null::categ_produse))", function(e
         obiectGlobal.categorii.push(elem.unnest);
     }
 });
-
 client.query("SELECT MIN(pret) FROM produse", function(err, rezPretMinim) {
     obiectGlobal.pretMinim = rezPretMinim.rows[0].min;
 });
-
 client.query("SELECT MAX(pret) FROM produse", function(err, rezPretMaxim) {
     obiectGlobal.pretMaxim = rezPretMaxim.rows[0].max;
 });
@@ -43,9 +44,21 @@ if(random_6_13 % 2 === 1) {
 }
 
 const app = express();
+
+app.use(session({ // aici se creaza proprietatea session a requestului (pot folosi req.session)
+    secret: 'abcdefg',//folosit de express session pentru criptarea id-ului de sesiune
+    resave: true,
+    saveUninitialized: false
+}));
+
 app.set("view engine", "ejs");
 
 app.use("/resurse", express.static(__dirname + "/resurse"));
+
+app.use("/*", function(req, res, next) {
+    res.locals.utilizator = req.session.utilizator;
+    next();
+});
 
 app.get(["/", "/index", "/home"], function(req, res) {
     res.render("pagini/index", {ip: req.ip, imagini: obiectGlobal.obImagini.imagini, categorii: obiectGlobal.categorii});
@@ -199,6 +212,94 @@ app.get("/eroare", function(req, res) {
     randeazaEroare(res, 1, "Titlu schimbat");
     res.end();
 });
+
+//-------------------------------------------------------------Utilizatori-------------------------------------------------------------
+
+//cod luat de pe https://www.programiz.com/javascript/examples/generate-random-strings#:~:text=random()%20method%20is%20used,a%20random%20character%20is%20generated.
+function generateString(length) {
+    const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+app.post("/inreg", function(req, res) {
+    const formular = new formidable.IncomingForm();
+    formular.parse(req, function(err, campuriText, campuriFisier) {
+        console.log(campuriText);
+        const salt = generateString(16);
+        const parolaCriptata = crypto.scryptSync(campuriText.parola, salt, 64).toString("hex");
+        let comandaInserare;
+        if(campuriText.ocupatie != "default") {
+            comandaInserare = `INSERT INTO utilizatori (username, nume, prenume, parola, email, culoare_chat, salt, ocupatie) VALUES ('${campuriText.username}', '${campuriText.nume}', '${campuriText.prenume}', '${parolaCriptata}', '${campuriText.email}', '${campuriText.culoare_chat}', '${salt}', '${campuriText.ocupatie}')`;
+        }
+        else {
+            comandaInserare = `INSERT INTO utilizatori (username, nume, prenume, parola, email, culoare_chat, salt) VALUES ('${campuriText.username}', '${campuriText.nume}', '${campuriText.prenume}', '${parolaCriptata}', '${campuriText.email}', '${campuriText.culoare_chat}', '${salt}')`;
+        }
+        client.query(comandaInserare, function(err, rezInserare) {
+            if(err)
+                console.log(err);
+        });
+        res.render("pagini/inregistrare", {raspuns: "Datele au fost introduse", categorii: obiectGlobal.categorii});
+    });
+});
+
+app.get("/logout", function(req, res) {
+    req.session.destroy();
+    res.locals.utilizator = null;
+    res.render("pagini/logout", {categorii: obiectGlobal.categorii});
+    res.end();
+});
+
+app.post("/login", function(req, res) {
+    const formular = new formidable.IncomingForm();
+    formular.parse(req, function(err, campuriText, campuriFisier) {
+        console.log(campuriText);
+        const username = campuriText.username;
+        const slectSalt = `SELECT salt FROM utilizatori WHERE username='${username}'`
+        let salt;
+        client.query(slectSalt, function(err,rezSelectSalt) {
+            if(err)
+                console.log(err);
+            salt = rezSelectSalt.rows[0].salt;
+            const parolaCriptata = crypto.scryptSync(campuriText.parola, salt, 64).toString("hex");
+            const querySelect = `SELECT * FROM utilizatori WHERE username='${username}' AND parola='${parolaCriptata}'`;
+            client.query(querySelect, function(err, rezSelect) {
+                if(err)
+                    console.log(err);
+                else {
+                    if(rezSelect.rows.length == 1) { //daca am utilizator cu date corecte
+                        req.session.utilizator={
+                            nume: rezSelect.rows[0].nume,
+                            prenume: rezSelect.rows[0].prenume,
+                            username: rezSelect.rows[0].username,
+                            email: rezSelect.rows[0].email,
+                            culoare_chat: rezSelect.rows[0].culoare_chat,
+                            rol: rezSelect.rows[0].rol,
+                            ocupatie: rezSelect.rows[0].ocupatie
+                        }
+                        res.redirect("/index");
+                    }
+                }
+            });
+        });
+    });
+});
+
+app.get("/inregistrare", function(req, res) {
+   res.render("pagini/inregistrare", {categorii: obiectGlobal.categorii});
+   res.end();
+});
+
+app.get("/ceva", function(req,res) {
+   console.log(req.session.utilizator);
+   res.end();
+});
+
+//-------------------------------------------------------------------------------------------------------------------------------------
 
 app.get("/*", function(req, res) {
     try {

@@ -178,7 +178,7 @@ function onClickCalculareMediaPreturi() {
     main.appendChild(raspuns);
     setTimeout(() => {
         raspuns.remove();
-    }, 2000)
+    }, 2000);
 }
 
 function onClickSortareCrescatoare() {
